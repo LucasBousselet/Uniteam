@@ -3,7 +3,7 @@ package unidev.uniteam;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class project_presentation extends AppCompatActivity {
+public class ProjectPresentation extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
