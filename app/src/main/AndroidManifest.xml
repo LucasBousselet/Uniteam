@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     package="unidev.uniteam" >
+=======
+>>>>>>> 224a5506b5e7ac05548365bf68b590bd1e509757
     package="unidev.uniteam">
 
     <application
@@ -8,20 +11,36 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+<<<<<<< HEAD
         android:theme="@style/AppTheme" >
         android:theme="@style/AppTheme">
         <activity
             android:name=".ProjectList"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
+=======
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".ProjectList"
+            android:label="@string/app_name"
+>>>>>>> 224a5506b5e7ac05548365bf68b590bd1e509757
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".project_presentation"></activity>
+=======
+
+        <activity
+            android:name=".ProjectAdd"
+            android:label="Ajout de projet"
+            android:theme="@style/AppTheme.EmptyActivity">
+        </activity>
+>>>>>>> 224a5506b5e7ac05548365bf68b590bd1e509757
     </application>
 
 </manifest>
