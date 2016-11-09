@@ -1,5 +1,6 @@
 package unidev.uniteam;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -45,6 +47,23 @@ public class ProjectList extends AppCompatActivity {
 
                 //projectList.add("test");
                 //listAdapter.notifyDataSetChanged();
+            }
+        });
+
+        /* Defines the list of project as an OnItemCLickListener
+        So that we can call a event when an item of the list is clicked
+         */
+        projectListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?>adapter,View v, int position, long id){
+                //ItemClicked item = adapter.getItemAtPosition(position);
+
+                /* Intent used to start the activity ProjectPresentation */
+                Intent intent = new Intent(ProjectList.this,ProjectPresentation.class);
+                adapter.getItemAtPosition(position);
+                String nom = listAdapter.getItem(position);
+                intent.putExtra("ProjectName", nom);
+                startActivity(intent);
             }
         });
     }
