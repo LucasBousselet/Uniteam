@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="unidev.uniteam.project_presentation"
     android:id="@+id/activity_project_presentation"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -9,5 +15,72 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="unidev.uniteam.project_presentation">
+    android:weightSum="7"
+    android:orientation="vertical">
 
 </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Projet en cours"/>
+    <!-- Mettre le nom du projet en cours -->
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_weight="2"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:paddingTop="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <ImageButton
+            android:src="R.id."
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/buttonProjectTasks"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp" />
+
+        <ImageButton
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/buttonProjectMeetings"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_weight="2"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <ImageButton
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/buttonProjectParticipants"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"/>
+
+        <ImageButton
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/buttonProjectReports"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Some text here"
+        android:id="@+id/textView" />
+</LinearLayout>
