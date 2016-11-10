@@ -3,14 +3,11 @@ package unidev.uniteam;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -25,8 +22,6 @@ public class ProjectList extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
         final ListView projectListView = (ListView) findViewById(R.id.project_list);
         final ArrayList<String> projectList = new ArrayList<String>();
         projectList.add("Test1");
@@ -39,7 +34,6 @@ public class ProjectList extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent ProjectAdd = new Intent(ProjectList.this, ProjectAdd.class);
                 startActivity(ProjectAdd);
 
@@ -64,7 +58,7 @@ public class ProjectList extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_about) {
             return true;
         }
 
