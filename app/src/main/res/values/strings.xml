@@ -1,5 +1,15 @@
 <resources>
+    <string name="facebook_app_id">148768462261006</string>
     <string name="app_name">UniTeam</string>
-    <string name="action_settings">Settings</string>
     <string name="title_activity_project_add">ProjectAdd</string>
+    <string name="about">About</string>
+    <string name="add_new_project">Add a new project</string>
+    <string name="project_name">Project name</string>
+    <string name="project_name_hint">My project</string>
+    <string name="starting_date">Starting date</string>
+    <string name="starting_date_hint">Month/Day/Year</string>
+    <string name="starting_line_1">Now introducing</string>
+    <string name="starting_line_2">The project management app which makes your life easier !</string>
+    <string name="project_button">View current projects</string>
+
 </resources>
