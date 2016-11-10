@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="unidev.uniteam.ProjectPresentation"
     android:id="@+id/activity_project_presentation"
@@ -15,6 +16,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/project_presentation_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -36,7 +38,9 @@
             android:layout_width="match_parent"
             android:id="@+id/buttonProjectTasks"
             android:layout_weight="1"
-            android:layout_marginRight="5dp" />
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/ic_tasks"
+            android:scaleType="fitCenter"/>
         <!--android:src="R.id."-->
 
         <ImageButton
@@ -44,7 +48,9 @@
             android:layout_width="match_parent"
             android:id="@+id/buttonProjectMeetings"
             android:layout_weight="1"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="5dp"
+            android:src="@mipmap/ic_calendar"
+            android:scaleType="fitCenter"/>
     </LinearLayout>
 
     <LinearLayout
@@ -62,14 +68,18 @@
             android:layout_width="match_parent"
             android:id="@+id/buttonProjectParticipants"
             android:layout_weight="1"
-            android:layout_marginRight="5dp"/>
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/ic_people"
+            android:scaleType="fitCenter"/>
 
         <ImageButton
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:id="@+id/buttonProjectReports"
             android:layout_weight="1"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="5dp"
+            android:src="@mipmap/ic_notebook"
+            android:scaleType="fitCenter"/>
     </LinearLayout>
 
     <TextView
