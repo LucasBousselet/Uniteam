@@ -1,7 +1,6 @@
 <resources>
     <string name="facebook_app_id">148768462261006</string>
     <string name="app_name">UniTeam</string>
-    <string name="action_settings">Settings</string>
     <string name="title_activity_project_add">ProjectAdd</string>
     <string name="about">About</string>
     <string name="add_new_project">Add a new project</string>

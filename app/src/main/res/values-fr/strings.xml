@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="facebook_app_id">148768462261006</string>
+    <string name="app_name">UniTeam</string>
+    <string name="title_activity_project_add">ProjectAdd</string>
+    <string name="about">A propos</string>
+    <string name="add_new_project">Ajout d\'un projet</string>
+    <string name="project_name">Nom du projet</string>
+    <string name="project_name_hint">Mon projet</string>
+    <string name="starting_date">Date de démarrage</string>
+    <string name="starting_date_hint">Mois/Jour/Année</string>
+    <string name="starting_line_1">Bienvenue sur</string>
+    <string name="starting_line_2">L\'application de gestion de projet qui vous simplifie la vie !</string>
+    <string name="project_button">Voir la liste des projets</string>
+
+</resources>

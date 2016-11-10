@@ -1,90 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="unidev.uniteam.ProjectPresentation"
     android:id="@+id/activity_project_presentation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="16dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:weightSum="7"
-    android:orientation="vertical">
+    tools:context="unidev.uniteam.ProjectPresentation">
 
     <TextView
         android:id="@+id/project_presentation_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Projet en cours"/>
+        android:text="Projet en cours" />
     <!-- Mettre le nom du projet en cours -->
 
     <LinearLayout
-        android:layout_height="wrap_content"
         android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:weightSum="2"
         android:orientation="horizontal"
-        android:paddingTop="15dp"
         android:paddingLeft="15dp"
-        android:paddingRight="15dp">
+        android:paddingRight="15dp"
+        android:paddingTop="15dp"
+        android:weightSum="2">
 
         <ImageButton
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
             android:id="@+id/buttonProjectTasks"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginRight="5dp"
-            android:src="@mipmap/ic_tasks"
-            android:scaleType="fitCenter"/>
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_tasks" />
         <!--android:src="R.id."-->
 
         <ImageButton
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
             android:id="@+id/buttonProjectMeetings"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
-            android:src="@mipmap/ic_calendar"
-            android:scaleType="fitCenter"/>
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_calendar" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_height="wrap_content"
         android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:weightSum="2"
         android:orientation="horizontal"
-        android:paddingTop="5dp"
         android:paddingLeft="15dp"
-        android:paddingRight="15dp">
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:weightSum="2">
 
         <ImageButton
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
             android:id="@+id/buttonProjectParticipants"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginRight="5dp"
-            android:src="@mipmap/ic_people"
-            android:scaleType="fitCenter"/>
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_people" />
 
         <ImageButton
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
             android:id="@+id/buttonProjectReports"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
-            android:src="@mipmap/ic_notebook"
-            android:scaleType="fitCenter"/>
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_notebook" />
     </LinearLayout>
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:text="Some text here"
-        android:id="@+id/textView" />
+        android:text="Some text here" />
 </LinearLayout>
