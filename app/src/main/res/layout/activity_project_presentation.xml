@@ -35,7 +35,7 @@
             android:layout_below="@id/project_presentation_name"
             android:layout_alignRight="@id/anchorPresentationPage"
             android:layout_marginRight="5dp"
-            android:src="@drawable/tasks"
+            android:src="@drawable/ic_tasks"
             android:background="@android:color/transparent"
             android:padding="10dp"
             android:scaleType="fitCenter" />
@@ -59,7 +59,7 @@
             android:background="@android:color/transparent"
             android:padding="10dp"
             android:layout_marginLeft="5dp"
-            android:src="@drawable/calendar"
+            android:src="@drawable/ic_calendar"
             android:scaleType="fitCenter"/>
 
         <TextView
@@ -81,7 +81,7 @@
             android:layout_marginRight="5dp"
             android:background="@android:color/transparent"
             android:padding="10dp"
-            android:src="@drawable/people"
+            android:src="@drawable/ic_participants"
             android:scaleType="fitCenter"/>
 
         <TextView
@@ -103,7 +103,7 @@
             android:layout_marginLeft="5dp"
             android:background="@android:color/transparent"
             android:padding="10dp"
-            android:src="@drawable/notebook"
+            android:src="@drawable/ic_reports"
             android:scaleType="fitCenter"/>
 
         <TextView

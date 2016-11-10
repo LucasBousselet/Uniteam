@@ -30,7 +30,7 @@
         android:background="@android:color/transparent"
         android:paddingBottom="16dp"
         android:textAlignment="center"
-        app:srcCompat="@drawable/uniteam_text" />
+        app:srcCompat="@drawable/im_uniteam_logo_text" />
 
     <TextView
         android:id="@+id/textView4"

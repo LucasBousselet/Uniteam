@@ -21,14 +21,10 @@
 
     <!-- String for activity_project_presentation -->
     <string name="project_name">Nom du projet</string>
-    <string name="task_project_presentation">Tâches</string>
-    <string name="meeting_project_presentation">Réunions</string>
-    <string name="participant_project_presentation">Participants</string>
-    <string name="report_project_presentation">Compte-rendus</string>
-    <string name="project_description">Mettre la description du projet ici !</string>
-
     <string name="task_button_legend">Tâches</string>
     <string name="meetings_button_legend">Réunions</string>
     <string name="participants_button_legend">Participants</string>
     <string name="reports_button_legend">Comptes-Rendus</string>
+    <string name="project_description">Mettre la description du projet ici !</string>
+
 </resources>
