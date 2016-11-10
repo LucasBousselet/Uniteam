@@ -27,4 +27,8 @@
     <string name="report_project_presentation">Compte-rendus</string>
     <string name="project_description">Mettre la description du projet ici !</string>
 
+    <string name="task_button_legend">Tâches</string>
+    <string name="meetings_button_legend">Réunions</string>
+    <string name="participants_button_legend">Participants</string>
+    <string name="reports_button_legend">Comptes-Rendus</string>
 </resources>
