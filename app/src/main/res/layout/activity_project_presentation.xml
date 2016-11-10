@@ -1,87 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<<<<<<< HEAD
 <!--<ScrollView-->
-    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
-    <!--tools:context="unidev.uniteam.ProjectPresentation"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_width="match_parent">-->
+<!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:tools="http://schemas.android.com/tools"-->
+<!--tools:context="unidev.uniteam.ProjectPresentation"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_width="match_parent">-->
 
-    <!--<TableLayout-->
-        <!--android:id="@+id/activity_project_presentation"-->
-        <!--android:paddingBottom="16dp"-->
-        <!--android:paddingLeft="16dp"-->
-        <!--android:paddingRight="16dp"-->
-        <!--android:paddingTop="16dp"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:stretchColumns="0,1">-->
+<!--<TableLayout-->
+<!--android:id="@+id/activity_project_presentation"-->
+<!--android:paddingBottom="16dp"-->
+<!--android:paddingLeft="16dp"-->
+<!--android:paddingRight="16dp"-->
+<!--android:paddingTop="16dp"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--android:stretchColumns="0,1">-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/project_presentation_name"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Projet en cours"-->
-            <!--android:padding="3dip"/>-->
-        <!--&lt;!&ndash; Mettre le nom du projet en cours &ndash;&gt;-->
+<!--<TextView-->
+<!--android:id="@+id/project_presentation_name"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:text="Projet en cours"-->
+<!--android:padding="3dip"/>-->
+<!--&lt;!&ndash; Mettre le nom du projet en cours &ndash;&gt;-->
 
-        <!--<View-->
-            <!--android:layout_height="2dip"-->
-            <!--android:background="@color/uniteamGreenDark"/>-->
+<!--<View-->
+<!--android:layout_height="2dip"-->
+<!--android:background="@color/uniteamGreenDark"/>-->
 
-        <!--<TableRow>-->
-            <!--<ImageButton-->
-                <!--android:id="@+id/buttonProjectTasks"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:src="@mipmap/ic_tasks"-->
-                <!--android:scaleType="fitCenter"-->
-                <!--android:padding="3dip"/>-->
+<!--<TableRow>-->
+<!--<ImageButton-->
+<!--android:id="@+id/buttonProjectTasks"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_width="match_parent"-->
+<!--android:src="@mipmap/ic_tasks"-->
+<!--android:scaleType="fitCenter"-->
+<!--android:padding="3dip"/>-->
 
-            <!--<ImageButton-->
-                <!--android:id="@+id/buttonProjectMeetings"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:src="@mipmap/ic_calendar"-->
-                <!--android:scaleType="fitCenter"-->
-                <!--android:padding="3dip"/>-->
-        <!--</TableRow>-->
+<!--<ImageButton-->
+<!--android:id="@+id/buttonProjectMeetings"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_marginLeft="5dp"-->
+<!--android:src="@mipmap/ic_calendar"-->
+<!--android:scaleType="fitCenter"-->
+<!--android:padding="3dip"/>-->
+<!--</TableRow>-->
 
-        <!--<TableRow>-->
-            <!--<ImageButton-->
-                <!--android:id="@+id/buttonProjectParticipants"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_column="0"-->
-                <!--android:layout_marginRight="5dp"-->
-                <!--android:src="@mipmap/ic_people"-->
-                <!--android:scaleType="fitCenter"-->
-                <!--android:padding="3dip"/>-->
+<!--<TableRow>-->
+<!--<ImageButton-->
+<!--android:id="@+id/buttonProjectParticipants"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_column="0"-->
+<!--android:layout_marginRight="5dp"-->
+<!--android:src="@mipmap/ic_people"-->
+<!--android:scaleType="fitCenter"-->
+<!--android:padding="3dip"/>-->
 
-            <!--<ImageButton-->
-                <!--android:id="@+id/buttonProjectReports"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_column="1"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:src="@mipmap/ic_notebook"-->
-                <!--android:scaleType="fitCenter"-->
-                <!--android:padding="3dip"/>-->
-        <!--</TableRow>-->
+<!--<ImageButton-->
+<!--android:id="@+id/buttonProjectReports"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_column="1"-->
+<!--android:layout_marginLeft="5dp"-->
+<!--android:src="@mipmap/ic_notebook"-->
+<!--android:scaleType="fitCenter"-->
+<!--android:padding="3dip"/>-->
+<!--</TableRow>-->
 
-        <!--<View-->
-            <!--android:layout_height="2dip"-->
-            <!--android:background="@color/uniteamGreenDark"/>-->
+<!--<View-->
+<!--android:layout_height="2dip"-->
+<!--android:background="@color/uniteamGreenDark"/>-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/textView"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Some text here"-->
-            <!--android:padding="3dip"/>-->
-    <!--</TableLayout>-->
+<!--<TextView-->
+<!--android:id="@+id/textView"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:text="Some text here"-->
+<!--android:padding="3dip"/>-->
+<!--</TableLayout>-->
 <!--</ScrollView>-->
 
 
@@ -140,83 +139,12 @@
             android:layout_width="130dp"
             android:layout_below="@id/buttonProjectTasks"
             android:layout_alignRight="@id/anchor"
-=======
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_project_presentation"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    android:weightSum="7"
-    tools:context="unidev.uniteam.ProjectPresentation">
-
-    <TextView
-        android:id="@+id/project_presentation_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Projet en cours" />
-    <!-- Mettre le nom du projet en cours -->
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:orientation="horizontal"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingTop="15dp"
-        android:weightSum="2">
-
-        <ImageButton
-            android:id="@+id/buttonProjectTasks"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:layout_marginRight="5dp"
             android:src="@mipmap/ic_people"
             android:scaleType="fitCenter"/>
-            android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_tasks" />
-        <!--android:src="R.id."-->
-
-        <ImageButton
-            android:id="@+id/buttonProjectMeetings"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_calendar" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:orientation="horizontal"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingTop="5dp"
-        android:weightSum="2">
-
-        <ImageButton
-            android:id="@+id/buttonProjectParticipants"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
->>>>>>> 4e7836cae961d68b4b1cc61ebaba591b4a6e6084
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_people" />
 
         <ImageButton
             android:id="@+id/buttonProjectReports"
-<<<<<<< HEAD
             android:layout_height="130dp"
             android:layout_width="130dp"
             android:layout_below="@id/buttonProjectTasks"
@@ -235,7 +163,7 @@
 </ScrollView>
 
 
-<!--<LinearLayout-->
+    <!--<LinearLayout-->
     <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
     <!--xmlns:tools="http://schemas.android.com/tools"-->
     <!--tools:context="unidev.uniteam.ProjectPresentation"-->
@@ -250,93 +178,76 @@
     <!--android:orientation="vertical">-->
 
     <!--<TextView-->
-        <!--android:id="@+id/project_presentation_name"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_weight="1"-->
-        <!--android:text="Projet en cours"/>-->
+    <!--android:id="@+id/project_presentation_name"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="Projet en cours"/>-->
     <!--&lt;!&ndash; Mettre le nom du projet en cours &ndash;&gt;-->
 
     <!--<LinearLayout-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_weight="2"-->
-        <!--android:weightSum="2"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:paddingTop="15dp"-->
-        <!--android:paddingLeft="15dp"-->
-        <!--android:paddingRight="15dp">-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_weight="2"-->
+    <!--android:weightSum="2"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:paddingTop="15dp"-->
+    <!--android:paddingLeft="15dp"-->
+    <!--android:paddingRight="15dp">-->
 
-        <!--<ImageButton-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:id="@+id/buttonProjectTasks"-->
-            <!--android:layout_weight="1"-->
-            <!--android:layout_marginRight="5dp"-->
-            <!--android:src="@mipmap/ic_tasks"-->
-            <!--android:scaleType="fitCenter"/>-->
-        <!--&lt;!&ndash;android:src="R.id."&ndash;&gt;-->
+    <!--<ImageButton-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:id="@+id/buttonProjectTasks"-->
+    <!--android:layout_weight="1"-->
+    <!--android:layout_marginRight="5dp"-->
+    <!--android:src="@mipmap/ic_tasks"-->
+    <!--android:scaleType="fitCenter"/>-->
+    <!--&lt;!&ndash;android:src="R.id."&ndash;&gt;-->
 
-        <!--<ImageButton-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:id="@+id/buttonProjectMeetings"-->
-            <!--android:layout_weight="1"-->
-            <!--android:layout_marginLeft="5dp"-->
-            <!--android:src="@mipmap/ic_calendar"-->
-            <!--android:scaleType="fitCenter"/>-->
+    <!--<ImageButton-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:id="@+id/buttonProjectMeetings"-->
+    <!--android:layout_weight="1"-->
+    <!--android:layout_marginLeft="5dp"-->
+    <!--android:src="@mipmap/ic_calendar"-->
+    <!--android:scaleType="fitCenter"/>-->
     <!--</LinearLayout>-->
 
     <!--<LinearLayout-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_weight="2"-->
-        <!--android:weightSum="2"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:paddingTop="5dp"-->
-        <!--android:paddingLeft="15dp"-->
-        <!--android:paddingRight="15dp">-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_weight="2"-->
+    <!--android:weightSum="2"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:paddingTop="5dp"-->
+    <!--android:paddingLeft="15dp"-->
+    <!--android:paddingRight="15dp">-->
 
-        <!--<ImageButton-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:id="@+id/buttonProjectParticipants"-->
-            <!--android:layout_weight="1"-->
-            <!--android:layout_marginRight="5dp"-->
-            <!--android:src="@mipmap/ic_people"-->
-            <!--android:scaleType="fitCenter"/>-->
+    <!--<ImageButton-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:id="@+id/buttonProjectParticipants"-->
+    <!--android:layout_weight="1"-->
+    <!--android:layout_marginRight="5dp"-->
+    <!--android:src="@mipmap/ic_people"-->
+    <!--android:scaleType="fitCenter"/>-->
 
-        <!--<ImageButton-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:id="@+id/buttonProjectReports"-->
-            <!--android:layout_weight="1"-->
-            <!--android:layout_marginLeft="5dp"-->
-            <!--android:src="@mipmap/ic_notebook"-->
-            <!--android:scaleType="fitCenter"/>-->
+    <!--<ImageButton-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:id="@+id/buttonProjectReports"-->
+    <!--android:layout_weight="1"-->
+    <!--android:layout_marginLeft="5dp"-->
+    <!--android:src="@mipmap/ic_notebook"-->
+    <!--android:scaleType="fitCenter"/>-->
     <!--</LinearLayout>-->
 
     <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_weight="2"-->
-        <!--android:text="Some text here"-->
-        <!--android:id="@+id/textView" />-->
-<!--</LinearLayout>-->
-=======
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_notebook" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:text="Some text here" />
-</LinearLayout>
->>>>>>> 4e7836cae961d68b4b1cc61ebaba591b4a6e6084
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="2"-->
+    <!--android:text="Some text here"-->
+    <!--android:id="@+id/textView" />-->
+    <!--</LinearLayout>-->
