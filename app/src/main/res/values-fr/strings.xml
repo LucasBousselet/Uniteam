@@ -12,5 +12,8 @@
     <string name="starting_line_1">Bienvenue sur</string>
     <string name="starting_line_2">L\'application de gestion de projet qui vous simplifie la vie !</string>
     <string name="project_button">Voir la liste des projets</string>
-
+    <string name="task_button_legend">Tâches</string>
+    <string name="meetings_button_legend">Réunions</string>
+    <string name="participants_button_legend">Participants</string>
+    <string name="reports_button_legend">Comptes-Rendus</string>
 </resources>

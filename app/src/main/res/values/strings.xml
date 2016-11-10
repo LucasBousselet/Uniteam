@@ -11,5 +11,8 @@
     <string name="starting_line_1">Now introducing</string>
     <string name="starting_line_2">The project management app which makes your life easier !</string>
     <string name="project_button">View current projects</string>
-
+    <string name="task_button_legend">Tasks</string>
+    <string name="meetings_button_legend">Meetings</string>
+    <string name="participants_button_legend">Participants</string>
+    <string name="reports_button_legend">Reports</string>
 </resources>

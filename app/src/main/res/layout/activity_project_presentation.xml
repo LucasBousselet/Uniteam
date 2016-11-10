@@ -108,6 +108,7 @@
 
         <TextView
             android:id="@+id/anchor"
+            android:id="@+id/anchorPresentationPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"/>
@@ -117,46 +118,86 @@
             android:layout_height="130dp"
             android:layout_width="130dp"
             android:layout_below="@id/project_presentation_name"
-            android:layout_alignRight="@id/anchor"
+            android:layout_alignRight="@id/anchorPresentationPage"
             android:layout_marginRight="5dp"
             android:src="@mipmap/ic_tasks"
             android:scaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/legendTasksButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/buttonProjectTasks"
+            android:layout_alignLeft="@id/buttonProjectTasks"
+            android:layout_alignRight="@id/buttonProjectTasks"
+            android:gravity="center"
+            android:text="@string/task_button_legend"/>
 
         <ImageButton
             android:id="@+id/buttonProjectMeetings"
             android:layout_height="130dp"
             android:layout_width="130dp"
             android:layout_below="@id/project_presentation_name"
-            android:layout_alignLeft="@id/anchor"
+            android:layout_alignLeft="@id/anchorPresentationPage"
             android:layout_marginLeft="5dp"
             android:src="@mipmap/ic_calendar"
             android:scaleType="fitCenter"/>
+
+        <TextView
+            android:id="@+id/legendMeetingsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/buttonProjectMeetings"
+            android:layout_alignLeft="@id/buttonProjectMeetings"
+            android:layout_alignRight="@id/buttonProjectMeetings"
+            android:gravity="center"
+            android:text="@string/meetings_button_legend"/>
 
         <ImageButton
             android:id="@+id/buttonProjectParticipants"
             android:layout_height="130dp"
             android:layout_width="130dp"
-            android:layout_below="@id/buttonProjectTasks"
-            android:layout_alignRight="@id/anchor"
+            android:layout_below="@id/legendTasksButton"
+            android:layout_alignRight="@id/anchorPresentationPage"
             android:layout_marginRight="5dp"
             android:src="@mipmap/ic_people"
             android:scaleType="fitCenter"/>
+
+        <TextView
+            android:id="@+id/legendParticipantButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/buttonProjectParticipants"
+            android:layout_alignLeft="@id/buttonProjectParticipants"
+            android:layout_alignRight="@id/buttonProjectParticipants"
+            android:gravity="center"
+            android:text="@string/participants_button_legend"/>
 
         <ImageButton
             android:id="@+id/buttonProjectReports"
             android:layout_height="130dp"
             android:layout_width="130dp"
-            android:layout_below="@id/buttonProjectTasks"
-            android:layout_alignLeft="@id/anchor"
+            android:layout_below="@id/legendMeetingsButton"
+            android:layout_alignLeft="@id/anchorPresentationPage"
             android:layout_marginLeft="5dp"
             android:src="@mipmap/ic_notebook"
             android:scaleType="fitCenter"/>
 
         <TextView
+            android:id="@+id/legendReportsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/buttonProjectReports"
+            android:layout_alignLeft="@id/buttonProjectMeetings"
+            android:layout_alignRight="@id/buttonProjectMeetings"
+            android:gravity="center"
+            android:text="@string/reports_button_legend"/>
+
+        <TextView
             android:id="@+id/project_presentation_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/buttonProjectParticipants"
+            android:layout_below="@id/legendParticipantButton"
             android:text="Some text here" />
 
     </RelativeLayout>
