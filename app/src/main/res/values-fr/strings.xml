@@ -2,9 +2,16 @@
 <resources>
     <string name="facebook_app_id">148768462261006</string>
 
-    <!-- String for menu_project_list -->
+    <!-- String for menu_about -->
     <string name="app_name">UniTeam</string>
-    <string name="about">A propos</string>
+    <string name="about">A propos de nous</string>
+
+    <!-- String for activity_project_list -->
+    <string name="project_list_label">Liste des projets</string>
+
+    <!-- String for activity_about_us -->
+    <string name="top">Qui se cache derrière Uniteam ?</string>
+    <string name="bottom">Nous sommes 3 étudiants français en informatique...</string>
 
     <!-- String for activity_project_add -->
     <string name="title_activity_project_add">ProjectAdd</string>
@@ -20,11 +27,15 @@
     <string name="project_button">Voir la liste des projets</string>
 
     <!-- String for activity_project_presentation -->
+    <string name="project_overview_label">Vue d\'ensemble du projet</string>
     <string name="project_name">Nom du projet</string>
     <string name="task_button_legend">Tâches</string>
     <string name="meetings_button_legend">Réunions</string>
     <string name="participants_button_legend">Participants</string>
     <string name="reports_button_legend">Comptes-Rendus</string>
     <string name="project_description">Mettre la description du projet ici !</string>
+
+    <!-- String for activity_task_kanban -->
+    <string name="kanban_label">Vue Kanban du projet</string>
 
 </resources>
