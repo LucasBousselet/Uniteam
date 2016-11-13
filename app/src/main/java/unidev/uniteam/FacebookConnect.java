@@ -61,7 +61,8 @@ public class FacebookConnect extends AppCompatActivity {
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
         projectButton = (Button) findViewById(R.id.project_button);
-        projectButton.setVisibility(View.INVISIBLE);
+        // TODO put back at the end of the project
+        //projectButton.setVisibility(View.INVISIBLE);
         callbackManager = CallbackManager.Factory.create();
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -73,12 +74,12 @@ public class FacebookConnect extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-                // TODO...
+                // TODO implement method
             }
 
             @Override
             public void onError(FacebookException e) {
-                // TODO...
+                // TODO implement method
             }
         });
 

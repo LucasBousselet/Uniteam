@@ -54,7 +54,7 @@ public class ProjectAdd extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.validate:
 
-                // Fill database + return to previous screen.
+                // TODO Fill database + return to previous screen.
 
                 return true;
             default:
