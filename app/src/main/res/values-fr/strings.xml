@@ -11,29 +11,30 @@
 
     <!-- String for activity_about_us -->
     <string name="top">Qui se cache derrière Uniteam ?</string>
-    <string name="bottom">Nous sommes 3 étudiants français en informatique...</string>
+    <string name="bottom">Nous sommes 3 étudiants français en informatique…</string>
 
     <!-- String for activity_project_add -->
     <string name="title_activity_project_add">ProjectAdd</string>
     <string name="add_new_project">Ajout d\'un projet</string>
-    <string name="project_name_facebook_connect">Nom du projet</string>
+    <string name="project_name_label">Nom du projet</string>
     <string name="project_name_hint">Mon projet</string>
-    <string name="starting_date">Date de démarrage</string>
-    <string name="starting_date_hint">Mois/Jour/Année</string>
+    <string name="project_description">Description du projet</string>
+    <string name="project_description_hint">Mon projet traite de…</string>
 
     <!-- String for activity_facebook_connect -->
     <string name="starting_line_1">Bienvenue sur</string>
     <string name="starting_line_2">L\'application de gestion de projet qui vous simplifie la vie !</string>
     <string name="project_button">Voir la liste des projets</string>
+    <string name="connection_successful">Connexion réussie</string>
+    <string name="cancel_connection">Connexion annulée</string>
+    <string name="connection_error">Echec de la connexion</string>
 
     <!-- String for activity_project_presentation -->
     <string name="project_overview_label">Vue d\'ensemble du projet</string>
-    <string name="project_name">Nom du projet</string>
     <string name="task_button_legend">Tâches</string>
     <string name="meetings_button_legend">Réunions</string>
     <string name="participants_button_legend">Participants</string>
     <string name="reports_button_legend">Comptes-Rendus</string>
-    <string name="project_description">Mettre la description du projet ici !</string>
 
     <!-- String for activity_task_kanban -->
     <string name="kanban_label">Vue Kanban du projet</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="facebook_app_id">148768462261006</string>
+    <string name="refresh_display">Refresh display</string>
 
     <!-- String for menu_about -->
     <string name="app_name">UniTeam</string>
@@ -11,29 +12,32 @@
 
     <!-- String for activity_about_us -->
     <string name="top">Who is Uniteam ?</string>
-    <string name="bottom">We are 3 French students studying computer science...</string>
+    <string name="bottom">We are 3 French students studying computer science…</string>
 
     <!-- String for activity_project_add -->
     <string name="title_activity_project_add">ProjectAdd</string>
     <string name="add_new_project">Add a new project</string>
     <string name="project_name_label">Project name</string>
     <string name="project_name_hint">My project</string>
-    <string name="starting_date">Starting date</string>
-    <string name="starting_date_hint">Month/Day/Year</string>
+    <string name="project_description">Project description</string>
+    <string name="project_description_hint">My project is about…</string>
 
     <!-- String for activity_facebook_connect -->
     <string name="starting_line_1">Now introducing</string>
     <string name="starting_line_2">The project management app which makes your life easier !</string>
     <string name="project_button">View current projects</string>
+    <string name="connection_successful">Connection successful</string>
+    <string name="cancel_connection">Connection cancelled</string>
+    <string name="connection_error">Connection failed</string>
+    <string name="Uniteam_logo">UniTeam Logo</string>
 
     <!-- String for activity_project_presentation -->
     <string name="project_overview_label">Project overview</string>
-    <string name="project_name">Project name</string>
+
     <string name="task_button_legend">Tasks</string>
     <string name="meetings_button_legend">Meetings</string>
     <string name="participants_button_legend">Participants</string>
     <string name="reports_button_legend">Reports</string>
-    <string name="project_description">Put project description here !</string>
 
     <!-- String for activity_task_kanban -->
     <string name="todo_task_kanban">TODO</string>
