@@ -38,6 +38,7 @@
     <string name="meetings_button_legend">Meetings</string>
     <string name="participants_button_legend">Participants</string>
     <string name="reports_button_legend">Reports</string>
+    <string name="coming_soon">Coming soon !</string>
 
     <!-- String for activity_task_kanban -->
     <string name="todo_task_kanban">TODO</string>

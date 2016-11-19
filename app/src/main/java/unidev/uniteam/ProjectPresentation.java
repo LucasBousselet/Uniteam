@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ProjectPresentation extends AppCompatActivity {
 
@@ -37,6 +38,36 @@ public class ProjectPresentation extends AppCompatActivity {
             public void onClick(View view) {
                 Intent ProjectKanban = new Intent(ProjectPresentation.this, TaskKanban.class);
                 startActivity(ProjectKanban);
+            }
+        });
+
+        ImageButton meetingsButton = (ImageButton) findViewById(R.id.buttonProjectMeetings);
+        meetingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),
+                        getResources().getString(R.string.coming_soon),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ImageButton participantsButton = (ImageButton) findViewById(R.id.buttonProjectParticipants);
+        participantsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),
+                        getResources().getString(R.string.coming_soon),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ImageButton reportsButton = (ImageButton) findViewById(R.id.buttonProjectReports);
+        reportsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),
+                        getResources().getString(R.string.coming_soon),
+                        Toast.LENGTH_SHORT).show();
             }
         });
 

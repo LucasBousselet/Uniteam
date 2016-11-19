@@ -35,6 +35,7 @@
     <string name="meetings_button_legend">Réunions</string>
     <string name="participants_button_legend">Participants</string>
     <string name="reports_button_legend">Comptes-Rendus</string>
+    <string name="coming_soon">Bientôt disponible !</string>
 
     <!-- String for activity_task_kanban -->
     <string name="kanban_label">Vue Kanban du projet</string>

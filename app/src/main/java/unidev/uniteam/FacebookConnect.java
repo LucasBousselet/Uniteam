@@ -74,7 +74,7 @@ public class FacebookConnect extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
                 Toast.makeText(getApplicationContext(),
                         getResources().getString(R.string.connection_successful),
-                        Toast.LENGTH_LONG).show();
+                        Toast.LENGTH_SHORT).show();
                 Intent ProjectList = new Intent(FacebookConnect.this, ProjectList.class);
                 startActivity(ProjectList);
                 // TODO add auth token in database
@@ -84,14 +84,14 @@ public class FacebookConnect extends AppCompatActivity {
             public void onCancel() {
                 Toast.makeText(getApplicationContext(),
                         getResources().getString(R.string.cancel_connection),
-                        Toast.LENGTH_LONG).show();
+                        Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(FacebookException e) {
                 Toast.makeText(getApplicationContext(),
                         getResources().getString(R.string.connection_error),
-                        Toast.LENGTH_LONG).show();
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
