@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -34,5 +35,14 @@ public class ProjectPresentation extends AppCompatActivity {
             }
         });
 
+        //Test pour accéder a l'activite de description de taches, en attendant la bdd
+        Button boutonTest = (Button) findViewById(R.id.testButton);
+        boutonTest.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent toto = new Intent(ProjectPresentation.this, TaskDescription.class);
+                startActivity(toto);
+            }
+        });
     }
 }

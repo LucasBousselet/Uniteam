@@ -39,6 +39,10 @@
             android:theme="@style/AppTheme.EmptyActivity" />
 
         <activity
+            android:name=".TaskDescription"
+            android:label="Task description"/>
+
+        <activity
             android:name=".TaskKanban"
             android:label="@string/kanban_label" />
 

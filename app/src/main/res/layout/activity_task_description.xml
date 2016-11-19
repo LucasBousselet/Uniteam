@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="unidev.uniteam.TaskDescription"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/taskDescriptionText"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:text="Task Description : ???"/>
+
+    <View
+        android:layout_height="2dip"
+        android:layout_width="match_parent"
+        android:background="@color/uniteamGreenDark"/>
+
+    <TextView
+        android:id="@+id/taskState"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:text="État : ???" />
+
+    <View
+        android:layout_height="2dip"
+        android:layout_width="match_parent"
+        android:background="@color/uniteamGreenDark"/>
+
+    <TextView
+        android:id="@+id/taskDeadline"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:text="DeadLine : ???" />
+
+    <View
+        android:layout_height="2dip"
+        android:layout_width="match_parent"
+        android:background="@color/uniteamGreenDark"/>
+
+    <TextView
+        android:id="@+id/taskDuration"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:text="Durée : ???" />
+
+    <View
+        android:layout_height="2dip"
+        android:layout_width="match_parent"
+        android:background="@color/uniteamGreenDark"/>
+
+    <SeekBar
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="8dp"/>
+</LinearLayout>
