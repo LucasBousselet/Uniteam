@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -23,6 +24,8 @@ public class FacebookConnect extends AppCompatActivity {
     private CallbackManager callbackManager;
     private Button projectButton;
 
+    /*
+    * Shouldn't be necessary, to delete WHEN SURE !
     protected void onStart() {
         super.onStart();
         if (AccessToken.getCurrentAccessToken() != null) {
@@ -38,6 +41,7 @@ public class FacebookConnect extends AppCompatActivity {
             projectButton.setVisibility(View.VISIBLE);
         }
     }
+    */
 
     protected void onResume() {
         super.onResume();
@@ -61,25 +65,33 @@ public class FacebookConnect extends AppCompatActivity {
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
         projectButton = (Button) findViewById(R.id.project_button);
-        // TODO put back at the end of the project
+        // TODO put back at the end of the Project
         //projectButton.setVisibility(View.INVISIBLE);
         callbackManager = CallbackManager.Factory.create();
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                Toast.makeText(getApplicationContext(),
+                        getResources().getString(R.string.connection_successful),
+                        Toast.LENGTH_SHORT).show();
                 Intent ProjectList = new Intent(FacebookConnect.this, ProjectList.class);
                 startActivity(ProjectList);
+                // TODO add auth token in database
             }
 
             @Override
             public void onCancel() {
-                // TODO implement method
+                Toast.makeText(getApplicationContext(),
+                        getResources().getString(R.string.cancel_connection),
+                        Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(FacebookException e) {
-                // TODO implement method
+                Toast.makeText(getApplicationContext(),
+                        getResources().getString(R.string.connection_error),
+                        Toast.LENGTH_SHORT).show();
             }
         });
 

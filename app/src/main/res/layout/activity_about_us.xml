@@ -1,46 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_about_us"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="unidev.uniteam.AboutUs">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <TextView
+        android:id="@+id/textView5"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/top"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
-        <TextView
-            android:text="@string/top"
-            android:textAlignment="center"
-            android:textSize="30sp"
-            android:paddingRight="20dp"
-            android:paddingLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView5" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/Uniteam_logo"
+        app:srcCompat="@drawable/im_icon_with_light_effect" />
 
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            app:srcCompat="@drawable/im_icon_with_light_effect"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/imageView3" />
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/bottom"
+        android:textAlignment="center" />
 
-        <TextView
-            android:text="@string/bottom"
-            android:paddingRight="20dp"
-            android:paddingLeft="20dp"
-            android:textAlignment="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView6" />
-
-    </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>

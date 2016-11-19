@@ -13,7 +13,7 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:scrollbarSize="4dp">
 
         <LinearLayout
@@ -24,14 +24,14 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginRight="20dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -49,9 +49,9 @@
 
                 <LinearLayout
                     android:id="@+id/task_kanban_todo"
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/button15"
@@ -148,21 +148,21 @@
                 <View
                     android:layout_width="2dp"
                     android:layout_height="fill_parent"
-                    android:layout_marginRight="20dp"
                     android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
                     android:background="@color/uniteamGreenDark" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="20dp"
                     android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -180,15 +180,15 @@
 
                     <LinearLayout
                         android:id="@+id/task_kanban_doing"
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
                         <Button
-                            android:text="Button"
+                            android:id="@+id/button3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/button3" />
+                            android:text="Button" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -202,8 +202,8 @@
                 <View
                     android:layout_width="2dp"
                     android:layout_height="fill_parent"
-                    android:layout_marginRight="20dp"
                     android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
                     android:background="@color/uniteamGreenDark" />
 
                 <LinearLayout
@@ -212,9 +212,9 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -231,9 +231,9 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
                         <Button
                             android:id="@+id/button8"

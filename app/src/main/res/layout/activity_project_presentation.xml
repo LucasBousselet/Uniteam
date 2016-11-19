@@ -19,7 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="@string/project_name"
             android:textSize="20sp" />
         <!-- Mettre le nom du projet en cours -->
 
@@ -138,12 +137,11 @@
             android:text="@string/reports_button_legend" />
 
         <TextView
-            android:id="@+id/project_description"
-            android:layout_width="wrap_content"
+            android:id="@+id/project_presentation_description"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/legendParticipantButton"
-            android:layout_marginTop="25dp"
-            android:text="@string/project_description" />
+            android:layout_marginTop="25dp" />
 
         <Button
             android:id="@+id/testButton"
