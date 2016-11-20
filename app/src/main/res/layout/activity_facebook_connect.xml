@@ -25,10 +25,10 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:contentDescription="@string/app_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/app_name"
         android:paddingBottom="16dp"
         app:srcCompat="@drawable/im_uniteam_logo_text" />
 
@@ -53,10 +53,10 @@
         android:id="@+id/project_button"
         android:layout_width="237dp"
         android:layout_height="25dp"
-        android:textSize="13sp"
         android:layout_gravity="center_horizontal"
         android:background="@color/uniteamGreenDark"
+        android:text="@string/project_button"
         android:textColor="@android:color/white"
-        android:text="@string/project_button" />
+        android:textSize="13sp" />
 
 </LinearLayout>

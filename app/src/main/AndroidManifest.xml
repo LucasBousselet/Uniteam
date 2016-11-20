@@ -29,22 +29,16 @@
             android:label="@string/project_list_label"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity
-            android:name=".ProjectPresentation"
-            android:label="@string/project_overview_label" />
+        <activity android:name=".ProjectPresentation" />
 
         <activity
             android:name=".ProjectAdd"
             android:label="@string/add_new_project"
             android:theme="@style/AppTheme.EmptyActivity" />
 
-        <activity
-            android:name=".TaskDescription"
-            android:label="Task description"/>
+        <activity android:name=".TaskDescription" />
 
-        <activity
-            android:name=".TaskKanban"
-            android:label="@string/kanban_label" />
+        <activity android:name=".TaskKanban" />
 
         <activity
             android:name=".AboutUs"

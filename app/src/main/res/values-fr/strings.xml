@@ -30,14 +30,18 @@
     <string name="connection_error">Echec de la connexion</string>
 
     <!-- String for activity_project_presentation -->
-    <string name="project_overview_label">Vue d\'ensemble du projet</string>
     <string name="task_button_legend">Tâches</string>
     <string name="meetings_button_legend">Réunions</string>
     <string name="participants_button_legend">Participants</string>
     <string name="reports_button_legend">Comptes-Rendus</string>
     <string name="coming_soon">Bientôt disponible !</string>
 
-    <!-- String for activity_task_kanban -->
-    <string name="kanban_label">Vue Kanban du projet</string>
+    <!-- String for activity_task_description -->
+    <string name="task_description">Description</string>
+    <string name="task_current_state">Etat actuel</string>
+    <string name="task_deadline">Date de fin</string>
+    <string name="task_duration">Durée prévue</string>
+    <string name="task_progress">Progrès de la tâche</string>
+
 
 </resources>
