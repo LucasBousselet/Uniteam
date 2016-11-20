@@ -5,6 +5,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
+
+import org.json.JSONObject;
+
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class ProjectAdd extends AppCompatActivity {
 
@@ -17,7 +24,7 @@ public class ProjectAdd extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_project_add, menu);
+        inflater.inflate(R.menu.menu_validate, menu);
         return true;
     }
 
@@ -43,14 +50,14 @@ public class ProjectAdd extends AppCompatActivity {
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.connect();
 
-                    OutputStreamWriter wr= new OutputStreamWriter(connection.getOutputStream());
+                    OutputStreamWriter wr = new OutputStreamWriter(connection.getOutputStream());
                     wr.write(newProject.toString());
                     connection.disconnect();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 */
-
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -25,7 +25,8 @@ import java.util.Map;
 
 public class ProjectList extends AppCompatActivity {
 
-    private List<Map<String, String>> projectList = new ArrayList<Map<String, String>>();
+    private List<Integer> projectID = new ArrayList<>();
+    private List<Map<String, String>> projectList = new ArrayList<>();
     private SimpleAdapter adapterProjectListView = null;
 
     protected void onResume() {
@@ -79,26 +80,40 @@ public class ProjectList extends AppCompatActivity {
         /*
          * Defines the list of Project as an OnItemCLickListener
          * So that we can call a event when an item of the list is clicked
-        */
+         */
         projectListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                //ItemClicked item = adapterProjectListView.getItemAtPosition(position);
 
                 // Intent used to start the activity ProjectPresentation
                 Intent intent = new Intent(ProjectList.this, ProjectPresentation.class);
                 parent.getItemAtPosition(position);
 
-                @SuppressWarnings("unchecked")
-                HashMap<String, String> itemClicked = (HashMap<String, String>) adapterProjectListView.getItem(position);
-                String nom = itemClicked.get("name");
-                String description = itemClicked.get("description");
-                intent.putExtra("ProjectName", nom);
-                intent.putExtra("ProjectDescription", description);
+                // TODO Uncomment when using DB
+                //intent.putExtra("projectID", projectID.get(position));
                 startActivity(intent);
-
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_project_refresh, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        if (item.getItemId() == R.id.action_about) {
+            Intent AboutPage = new Intent(ProjectList.this, AboutUs.class);
+            startActivity(AboutPage);
+        } else if (item.getItemId() == R.id.refresh) {
+            // TODO Uncomment when using database
+            //RefreshProjectList();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void RefreshProjectList() {
@@ -125,6 +140,8 @@ public class ProjectList extends AppCompatActivity {
 
             // Clear old projectList
             projectList.clear();
+            projectID.clear();
+
             // Pour tous les objets on récupère les infos
             for (int i = 0; i < array.length(); i++) {
                 // On récupère un objet JSON du tableau
@@ -134,6 +151,7 @@ public class ProjectList extends AppCompatActivity {
                 am1.put("name", obj.getString("nom"));
                 am1.put("description", obj.getString("description"));
                 projectList.add(am1);
+                projectID.add(obj.getInt("id"));
             }
 
             // Refresh ListView
@@ -141,26 +159,5 @@ public class ProjectList extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_project_refresh, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        if (item.getItemId() == R.id.action_about) {
-            Intent AboutPage = new Intent(ProjectList.this, AboutUs.class);
-            startActivity(AboutPage);
-        }
-        else if (item.getItemId() == R.id.refresh) {
-            // TODO Uncomment when using database
-            return true;
-            //RefreshProjectList();
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

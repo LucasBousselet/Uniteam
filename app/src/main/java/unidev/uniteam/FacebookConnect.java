@@ -14,9 +14,18 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONObject;
+
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Arrays;
 
 public class FacebookConnect extends AppCompatActivity {
 
@@ -64,6 +73,8 @@ public class FacebookConnect extends AppCompatActivity {
         setContentView(R.layout.activity_facebook_connect);
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
+        loginButton.setReadPermissions("email");
+
         projectButton = (Button) findViewById(R.id.project_button);
         // TODO put back at the end of the Project
         //projectButton.setVisibility(View.INVISIBLE);
@@ -75,9 +86,44 @@ public class FacebookConnect extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),
                         getResources().getString(R.string.connection_successful),
                         Toast.LENGTH_SHORT).show();
+                // TODO Uncomment when usng DB
+                /*
+                GraphRequest request = GraphRequest.newMeRequest(
+                        AccessToken.getCurrentAccessToken(),
+                        new GraphRequest.GraphJSONObjectCallback() {
+                            @Override
+                            public void onCompleted(
+                                    JSONObject object,
+                                    GraphResponse response) {
+                                try {
+                                    JSONObject newUser = new JSONObject();
+                                    newUser.put("token", AccessToken.getCurrentAccessToken());
+                                    newUser.put("prenom", object.getString("first_name"));
+                                    newUser.put("nom", object.getString("last_name"));
+                                    newUser.put("email", object.getString("email"));
+                                    // TODO put correct database URL
+                                    String myurl = "http://www.exemple.com/getProjet";
+
+                                    URL url = new URL(myurl);
+                                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                                    connection.connect();
+
+                                    OutputStreamWriter wr = new OutputStreamWriter(connection.getOutputStream());
+                                    wr.write(newUser.toString());
+                                    connection.disconnect();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,first_name,last_name,email");
+                request.setParameters(parameters);
+                request.executeAsync();
+                */
+
                 Intent ProjectList = new Intent(FacebookConnect.this, ProjectList.class);
                 startActivity(ProjectList);
-                // TODO add auth token in database
             }
 
             @Override

@@ -11,50 +11,53 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+
 public class ProjectPresentation extends AppCompatActivity {
+
+    private int projectID;
+
+    protected void onResume(){
+        super.onResume();
+        // TODO Uncomment when using database
+        //GetProjectDetails();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_project_presentation);
-
-        // We retrieve the intent used to create the activity (from the ProjectList page)
-        Intent intent = getIntent();
-        /*
-        We fetch the name of the project that has been clicked previously, and pass through the intent
-        "ProjectName" is the name we gave the data when using the "putExtra" instruction
-         * We fetch the name of the Project that has been clicked previously, and pass through the intent
-         * *"ProjectName" is the name we gave the projectList when using the "putExtra" instruction
-        */
-        String clickedProjectName = intent.getStringExtra("ProjectName");
-        // Then we retrieve the correct TextView and we set the new text inside it
-        TextView projectName = (TextView) findViewById(R.id.project_presentation_name);
-        projectName.setText(clickedProjectName);
-
-        String clickedProjectDescription = intent.getStringExtra("ProjectDescription");
-        TextView projectDescription = (TextView) findViewById(R.id.project_presentation_description);
-        projectDescription.setText(clickedProjectDescription);
+        // TODO Uncomment when using DB
+        //projectID = getIntent().getIntExtra("ProjectID", -1);
 
         ImageButton taskButton = (ImageButton) findViewById(R.id.buttonProjectTasks);
         taskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent ProjectKanban = new Intent(ProjectPresentation.this, TaskKanban.class);
-                startActivity(ProjectKanban);
+                Intent intentKanban = new Intent(ProjectPresentation.this, TaskKanban.class);
+                intentKanban.putExtra("ProjectID", projectID);
+                startActivity(intentKanban);
             }
         });
 
-<<<<<<< HEAD
-        //Test pour accéder a l'activite de description de taches, en attendant la bdd
+        // Test pour acceder a l'activite de description de taches, en attendant la bdd
         Button boutonTest = (Button) findViewById(R.id.testButton);
-        boutonTest.setOnClickListener(new View.OnClickListener(){
+        boutonTest.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-                Intent toto = new Intent(ProjectPresentation.this, TaskDescription.class);
-                startActivity(toto);
+            public void onClick(View view) {
+                Intent taskKanban = new Intent(ProjectPresentation.this, TaskDescription.class);
+                startActivity(taskKanban);
             }
         });
-=======
+
         ImageButton meetingsButton = (ImageButton) findViewById(R.id.buttonProjectMeetings);
         meetingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +104,44 @@ public class ProjectPresentation extends AppCompatActivity {
             startActivity(AboutPage);
         }
         return super.onOptionsItemSelected(item);
->>>>>>> e5df37a676f58306e7f236303650e325979897bc
+    }
+
+    public void GetProjectDetails() {
+        try {
+            // TODO change with the actual database URL
+            String myurl = "http://www.exemple.com/getProjet";
+
+            URL url = new URL(myurl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.connect();
+            InputStream inputStream = connection.getInputStream();
+            /*
+             * InputStreamOperations est une classe complémentaire:
+             * Elle contient une méthode InputStreamToString.
+             */
+            String result = InputStreamOperations.InputStreamToString(inputStream);
+
+            connection.disconnect();
+
+            // On récupère le JSON complet
+            JSONObject jsonObject = new JSONObject(result);
+            // On récupère le tableau d'objets qui nous concerne
+            JSONArray array = new JSONArray(jsonObject.getString("projet"));
+
+            TextView projetDescriptionView = (TextView) findViewById(R.id.project_presentation_description);
+            // Pour tous les objets on récupère les infos
+            for (int i = 0; i < array.length(); i++) {
+                // On récupère un objet JSON du tableau
+                JSONObject obj = new JSONObject(array.getString(i));
+                setTitle(obj.getString("nom"));
+
+                projetDescriptionView.setText(obj.getString("description"));
+            }
+
+            projetDescriptionView.invalidate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

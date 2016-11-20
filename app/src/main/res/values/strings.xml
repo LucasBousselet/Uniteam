@@ -8,7 +8,7 @@
     <string name="about">About Us</string>
 
     <!-- String for activity_project_list -->
-    <string name="project_list_label">Project list</string>
+    <string name="project_list_label">Projects list</string>
 
     <!-- String for activity_about_us -->
     <string name="top">Who is Uniteam ?</string>
@@ -32,8 +32,6 @@
     <string name="Uniteam_logo">UniTeam Logo</string>
 
     <!-- String for activity_project_presentation -->
-    <string name="project_overview_label">Project overview</string>
-
     <string name="task_button_legend">Tasks</string>
     <string name="meetings_button_legend">Meetings</string>
     <string name="participants_button_legend">Participants</string>
@@ -44,6 +42,18 @@
     <string name="todo_task_kanban">TODO</string>
     <string name="doing_task_kanban">DOING</string>
     <string name="done_task_kanban">DONE</string>
-    <string name="kanban_label">Kanban view of the project</string>
+
+    <!-- String for activity_task_description -->
+    <string name="task_description">Description</string>
+    <string name="task_current_state">Current state</string>
+    <string name="task_deadline">Deadline</string>
+    <string name="task_duration">Scheduled duration</string>
+    <string name="task_progress">Task progress</string>
+    <string-array name="task_state">
+        <item>TODO</item>
+        <item>DOING</item>
+        <item>DONE</item>
+    </string-array>
+
 
 </resources>

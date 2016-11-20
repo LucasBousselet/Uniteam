@@ -14,13 +14,6 @@
         android:paddingRight="16dp"
         android:paddingTop="16dp">
 
-        <TextView
-            android:id="@+id/project_presentation_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:textSize="20sp" />
-        <!-- Mettre le nom du projet en cours -->
 
         <TextView
             android:id="@+id/anchorPresentationPage"
@@ -34,7 +27,6 @@
             android:layout_height="110dp"
             android:layout_alignEnd="@id/anchorPresentationPage"
             android:layout_alignRight="@id/anchorPresentationPage"
-            android:layout_below="@id/project_presentation_name"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
             android:background="@android:color/transparent"
@@ -61,7 +53,6 @@
             android:layout_height="110dp"
             android:layout_alignLeft="@id/anchorPresentationPage"
             android:layout_alignStart="@id/anchorPresentationPage"
-            android:layout_below="@id/project_presentation_name"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
             android:background="@android:color/transparent"
@@ -145,10 +136,13 @@
 
         <Button
             android:id="@+id/testButton"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_below="@id/project_description"
-            android:text="Test"/>
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/project_presentation_description"
+            android:layout_marginTop="29dp"
+            android:text="Test" />
 
     </RelativeLayout>
 </ScrollView>
