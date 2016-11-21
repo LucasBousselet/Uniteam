@@ -6,19 +6,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ProjectPresentation extends AppCompatActivity {
 
@@ -42,19 +35,9 @@ public class ProjectPresentation extends AppCompatActivity {
         taskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentKanban = new Intent(ProjectPresentation.this, TaskKanban.class);
+                Intent intentKanban = new Intent(ProjectPresentation.this, Kanban.class);
                 intentKanban.putExtra("ProjectID", projectID);
                 startActivity(intentKanban);
-            }
-        });
-
-        // Test pour acceder a l'activite de description de taches, en attendant la bdd
-        Button boutonTest = (Button) findViewById(R.id.testButton);
-        boutonTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent taskKanban = new Intent(ProjectPresentation.this, TaskDescription.class);
-                startActivity(taskKanban);
             }
         });
 
@@ -108,37 +91,26 @@ public class ProjectPresentation extends AppCompatActivity {
 
     public void GetProjectDetails() {
         try {
-            // TODO change with the actual database URL
-            String myurl = "http://www.exemple.com/getProjet";
+            // TODO Put the correct URL complement
+            JSONObject jsonObject = DatabaseConnect.SelectFromDB("GetProjectDetails");
 
-            URL url = new URL(myurl);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.connect();
-            InputStream inputStream = connection.getInputStream();
-            /*
-             * InputStreamOperations est une classe complémentaire:
-             * Elle contient une méthode InputStreamToString.
-             */
-            String result = InputStreamOperations.InputStreamToString(inputStream);
-
-            connection.disconnect();
-
-            // On récupère le JSON complet
-            JSONObject jsonObject = new JSONObject(result);
             // On récupère le tableau d'objets qui nous concerne
-            JSONArray array = new JSONArray(jsonObject.getString("projet"));
+            JSONArray array;
+            if (jsonObject != null) {
+                array = new JSONArray(jsonObject.getString("projet"));
 
-            TextView projetDescriptionView = (TextView) findViewById(R.id.project_presentation_description);
-            // Pour tous les objets on récupère les infos
-            for (int i = 0; i < array.length(); i++) {
-                // On récupère un objet JSON du tableau
-                JSONObject obj = new JSONObject(array.getString(i));
-                setTitle(obj.getString("nom"));
+                TextView projetDescriptionView = (TextView) findViewById(R.id.project_presentation_description);
+                // Pour tous les objets on récupère les infos
+                for (int i = 0; i < array.length(); i++) {
+                    // On récupère un objet JSON du tableau
+                    JSONObject obj = new JSONObject(array.getString(i));
+                    setTitle(obj.getString("nom"));
 
-                projetDescriptionView.setText(obj.getString("description"));
+                    projetDescriptionView.setText(obj.getString("description"));
+                }
+
+                projetDescriptionView.invalidate();
             }
-
-            projetDescriptionView.invalidate();
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -15,11 +15,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class TaskDescription extends AppCompatActivity {
@@ -27,7 +29,7 @@ public class TaskDescription extends AppCompatActivity {
     private int taskID;
     private Map<String, String> hashMapString = new HashMap<>(3);
     private Map<String, Integer> hashMapInt = new HashMap<>(3);
-    private Date deadline;
+    private Calendar deadline;
 
     protected void onResume() {
         super.onResume();
@@ -66,30 +68,23 @@ public class TaskDescription extends AppCompatActivity {
             case R.id.validate:
 
                 // TODO Uncomment when using database
-                /*
+
                 try {
-                    Spinner projectStateField = (Spinner) findViewById(R.id.spinner_task_state);
-                    SeekBar projectProgressField = (SeekBar) findViewById(R.id.task_progress);
+                    Spinner taskState = (Spinner) findViewById(R.id.spinner_task_state);
+                    SeekBar taskProgress = (SeekBar) findViewById(R.id.task_progress);
 
                     JSONObject newTaskProgress = new JSONObject();
 
-                    newTaskProgress.put("etat", projectStateField.getSelectedItem().toString());
-                    newTaskProgress.put("avancement", projectProgressField.getProgress());
+                    newTaskProgress.put("etat", taskState.getSelectedItem().toString());
+                    newTaskProgress.put("avancement", taskProgress.getProgress());
 
-                    // TODO put correct database URL
-                    String myurl = "http://www.exemple.com/getProjet";
+                    // TODO Put the correct URL complement
+                    DatabaseConnect.InsertIntoDB(newTaskProgress, "SetTask");
 
-                    URL url = new URL(myurl);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.connect();
-
-                    OutputStreamWriter wr = new OutputStreamWriter(connection.getOutputStream());
-                    wr.write(newTaskProgress.toString());
-                    connection.disconnect();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                */
+
                 finish();
                 return true;
             default:
@@ -99,69 +94,62 @@ public class TaskDescription extends AppCompatActivity {
 
     public void RefreshTaskDescription() {
         try {
-            // TODO change with the actual database URL
-            String myurl = "http://www.exemple.com/getProjet";
-
-            URL url = new URL(myurl);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.connect();
-            InputStream inputStream = connection.getInputStream();
-            /*
-             * InputStreamOperations est une classe complémentaire:
-             * Elle contient une méthode InputStreamToString.
-             */
-            String result = InputStreamOperations.InputStreamToString(inputStream);
-
-            connection.disconnect();
-
             // On récupère le JSON complet
-            JSONObject jsonObject = new JSONObject(result);
+            // TODO Put the correct URL complement
+            JSONObject jsonObject = DatabaseConnect.SelectFromDB("GetProject");
+
             // On récupère le tableau d'objets qui nous concerne
-            JSONArray array = new JSONArray(jsonObject.getString("projet"));
+            JSONArray array;
+            if (jsonObject != null) {
+                array = new JSONArray(jsonObject.getString("projet"));
 
-            // Pour tous les objets on récupère les infos
-            for (int i = 0; i < array.length(); i++) {
-                // On récupère un objet JSON du tableau
-                JSONObject obj = new JSONObject(array.getString(i));
-                // On fait le lien Projet - Objet JSON
-                hashMapString.put("name", obj.getString("nom"));
-                hashMapString.put("description", obj.getString("description"));
-                hashMapString.put("etat", obj.getString("etat"));
+                String myFormat = "EEE, d MMM yyyy HH:mm";
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.FRANCE);
 
-                hashMapInt.put("id", obj.getInt("id"));
-                hashMapInt.put("progress", obj.getInt("avancement"));
-                hashMapInt.put("duration", obj.getInt("duree"));
+                // Pour tous les objets on récupère les infos
+                for (int i = 0; i < array.length(); i++) {
+                    // On récupère un objet JSON du tableau
+                    JSONObject obj = new JSONObject(array.getString(i));
+                    // On fait le lien Projet - Objet JSON
+                    hashMapString.put("name", obj.getString("nom"));
+                    hashMapString.put("description", obj.getString("description"));
+                    hashMapString.put("etat", obj.getString("etat"));
 
-                String dateStr = obj.getString("deadline");
-                SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm");
-                deadline = sdf.parse(dateStr);
+                    hashMapInt.put("id", obj.getInt("id"));
+                    hashMapInt.put("progress", obj.getInt("avancement"));
+                    hashMapInt.put("duration", obj.getInt("duree"));
+
+                    String dateStr = obj.getString("deadlineField");
+                    deadline = Calendar.getInstance();
+                    String ackwardRipOff = dateStr.replace("/Date(", "").replace(")/", "");
+                    Long timeInMillis = Long.valueOf(ackwardRipOff);
+                    deadline.setTimeInMillis(timeInMillis);
+                }
+                setTitle(hashMapString.get("nom"));
+
+                TextView taskDescription = (TextView) findViewById(R.id.task_description_text);
+                taskDescription.setText(hashMapString.get("description"));
+
+                TextView taskDeadline = (TextView) findViewById(R.id.task_deadline);
+                taskDeadline.setText(sdf.format(deadline.getTime()));
+
+                TextView taskDuration = (TextView) findViewById(R.id.task_duration);
+                taskDuration.setText(hashMapInt.get("duration"));
+
+                Spinner taskState = (Spinner) findViewById(R.id.spinner_task_state);
+
+                String compareValue = hashMapString.get("etat");
+                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.task_state, android.R.layout.simple_spinner_item);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                taskState.setAdapter(adapter);
+                if (compareValue != null) {
+                    int spinnerPosition = adapter.getPosition(compareValue);
+                    taskState.setSelection(spinnerPosition);
+                }
+
+                SeekBar taskProgress = (SeekBar) findViewById(R.id.task_progress);
+                taskProgress.setProgress(hashMapInt.get("progress"));
             }
-            setTitle(hashMapString.get("nom"));
-
-            TextView taskDescription = (TextView) findViewById(R.id.task_description_text);
-            taskDescription.setText(hashMapString.get("description"));
-
-            TextView taskDeadline = (TextView) findViewById(R.id.task_deadline);
-            SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm");
-            taskDeadline.setText(sdf.format(deadline));
-
-            TextView taskDuration = (TextView) findViewById(R.id.task_duration);
-            taskDuration.setText(hashMapInt.get("duration"));
-
-            Spinner taskState = (Spinner) findViewById(R.id.spinner_task_state);
-
-            String compareValue = hashMapString.get("etat");
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.task_state, android.R.layout.simple_spinner_item);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            taskState.setAdapter(adapter);
-            if (compareValue != null) {
-                int spinnerPosition = adapter.getPosition(compareValue);
-                taskState.setSelection(spinnerPosition);
-            }
-
-            SeekBar taskProgress = (SeekBar) findViewById(R.id.task_progress);
-            taskProgress.setProgress(hashMapInt.get("progress"));
-
         } catch (Exception e) {
             e.printStackTrace();
         }

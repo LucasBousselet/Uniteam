@@ -15,9 +15,6 @@ import android.widget.SimpleAdapter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,11 +34,11 @@ public class ProjectList extends AppCompatActivity {
 
         // TODO comment when using database
         projectList.clear();
-        Map<String, String> am1 = new HashMap<String, String>(2);
+        Map<String, String> am1 = new HashMap<>(2);
         am1.put("name", "Test 1");
         am1.put("description", "Sub test 1");
         projectList.add(am1);
-        Map<String, String> am2 = new HashMap<String, String>(2);
+        Map<String, String> am2 = new HashMap<>(2);
         am2.put("name", "Test 2");
         am2.put("description", "Sub test 2");
         projectList.add(am2);
@@ -66,13 +63,13 @@ public class ProjectList extends AppCompatActivity {
         projectListView.setAdapter(adapterProjectListView);
 
         /*
-         *Floating action button used to launch a new activity to add a new project
+         * Floating action button used to launch a new activity to add a new project
          */
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent ProjectAdd = new Intent(ProjectList.this, ProjectAdd.class);
+                Intent ProjectAdd = new Intent(ProjectList.this, ProjectAddNew.class);
                 startActivity(ProjectAdd);
             }
         });
@@ -118,44 +115,32 @@ public class ProjectList extends AppCompatActivity {
 
     public void RefreshProjectList() {
         try {
-            // TODO change with the actual database URL
-            String myurl = "http://www.exemple.com/getProjet";
-
-            URL url = new URL(myurl);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.connect();
-            InputStream inputStream = connection.getInputStream();
-            /*
-             * InputStreamOperations est une classe complémentaire:
-             * Elle contient une méthode InputStreamToString.
-             */
-            String result = InputStreamOperations.InputStreamToString(inputStream);
-
-            connection.disconnect();
-
-            // On récupère le JSON complet
-            JSONObject jsonObject = new JSONObject(result);
+            // TODO Put the correct URL complement
+            JSONObject jsonObject = DatabaseConnect.SelectFromDB("GetProjects");
             // On récupère le tableau d'objets qui nous concerne
-            JSONArray array = new JSONArray(jsonObject.getString("projet"));
+            JSONArray array;
+            if (jsonObject != null) {
+                array = new JSONArray(jsonObject.getString("projet"));
 
-            // Clear old projectList
-            projectList.clear();
-            projectID.clear();
+                // Clear old projectList
+                projectList.clear();
+                projectID.clear();
 
-            // Pour tous les objets on récupère les infos
-            for (int i = 0; i < array.length(); i++) {
-                // On récupère un objet JSON du tableau
-                JSONObject obj = new JSONObject(array.getString(i));
-                // On fait le lien Projet - Objet JSON
-                Map<String, String> am1 = new HashMap<String, String>(2);
-                am1.put("name", obj.getString("nom"));
-                am1.put("description", obj.getString("description"));
-                projectList.add(am1);
-                projectID.add(obj.getInt("id"));
+                // Pour tous les objets on récupère les infos
+                for (int i = 0; i < array.length(); i++) {
+                    // On récupère un objet JSON du tableau
+                    JSONObject obj = new JSONObject(array.getString(i));
+                    // On fait le lien Projet - Objet JSON
+                    Map<String, String> am1 = new HashMap<>(2);
+                    am1.put("name", obj.getString("nom"));
+                    am1.put("description", obj.getString("description"));
+                    projectList.add(am1);
+                    projectID.add(obj.getInt("id"));
+                }
+
+                // Refresh ListView
+                adapterProjectListView.notifyDataSetChanged();
             }
-
-            // Refresh ListView
-            adapterProjectListView.notifyDataSetChanged();
         } catch (Exception e) {
             e.printStackTrace();
         }

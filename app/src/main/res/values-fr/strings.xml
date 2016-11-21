@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="facebook_app_id">148768462261006</string>
+    <string name="input_error">Merci de remplir tous les champs avant de valider</string>
 
     <!-- String for menu_about -->
     <string name="app_name">UniTeam</string>
@@ -13,7 +13,7 @@
     <string name="top">Qui se cache derrière Uniteam ?</string>
     <string name="bottom">Nous sommes 3 étudiants français en informatique…</string>
 
-    <!-- String for activity_project_add -->
+    <!-- String for activity_project_add_new -->
     <string name="title_activity_project_add">ProjectAdd</string>
     <string name="add_new_project">Ajout d\'un projet</string>
     <string name="project_name_label">Nom du projet</string>
@@ -40,8 +40,11 @@
     <string name="task_description">Description</string>
     <string name="task_current_state">Etat actuel</string>
     <string name="task_deadline">Date de fin</string>
-    <string name="task_duration">Durée prévue</string>
+    <string name="task_duration">"Durée prévue (en nombre d'heures)"</string>
     <string name="task_progress">Progrès de la tâche</string>
 
+    <!-- Strings for activity_task_add_new -->
+    <string name="add_new_task">Ajout d\'une tâche</string>
+    <string name="new_task_name">Nom de la tâche</string>
 
 </resources>

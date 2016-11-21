@@ -10,7 +10,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -20,29 +19,26 @@
             android:theme="@style/AppTheme.EmptyActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ProjectList"
             android:label="@string/project_list_label"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity android:name=".ProjectPresentation" />
-
         <activity
-            android:name=".ProjectAdd"
+            android:name=".ProjectAddNew"
             android:label="@string/add_new_project"
             android:theme="@style/AppTheme.EmptyActivity" />
-
         <activity android:name=".TaskDescription" />
-
-        <activity android:name=".TaskKanban" />
-
+        <activity android:name=".Kanban" />
         <activity
             android:name=".AboutUs"
             android:label="@string/about" />
-
+        <activity android:name=".TaskAddNew"
+            android:label="@string/add_new_task"/>
     </application>
+
 </manifest>

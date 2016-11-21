@@ -101,16 +101,10 @@ public class FacebookConnect extends AppCompatActivity {
                                     newUser.put("prenom", object.getString("first_name"));
                                     newUser.put("nom", object.getString("last_name"));
                                     newUser.put("email", object.getString("email"));
-                                    // TODO put correct database URL
-                                    String myurl = "http://www.exemple.com/getProjet";
 
-                                    URL url = new URL(myurl);
-                                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                                    connection.connect();
+                                    // TODO Put the correct URL complement
+                                    DatabaseConnect.InsertIntoDB(newUser,"SetTask");
 
-                                    OutputStreamWriter wr = new OutputStreamWriter(connection.getOutputStream());
-                                    wr.write(newUser.toString());
-                                    connection.disconnect();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }

@@ -2,19 +2,20 @@
 <resources>
     <string name="facebook_app_id">148768462261006</string>
     <string name="refresh_display">Refresh display</string>
+    <string name="input_error">Please fill all fields before validation</string>
 
-    <!-- String for menu_about -->
+    <!-- Strings for menu_about -->
     <string name="app_name">UniTeam</string>
     <string name="about">About Us</string>
 
-    <!-- String for activity_project_list -->
+    <!-- Strings for activity_project_list -->
     <string name="project_list_label">Projects list</string>
 
-    <!-- String for activity_about_us -->
+    <!-- Strings for activity_about_us -->
     <string name="top">Who is Uniteam ?</string>
     <string name="bottom">We are 3 French students studying computer science…</string>
 
-    <!-- String for activity_project_add -->
+    <!-- Strings for activity_project_add_new -->
     <string name="title_activity_project_add">ProjectAdd</string>
     <string name="add_new_project">Add a new project</string>
     <string name="project_name_label">Project name</string>
@@ -22,7 +23,7 @@
     <string name="project_description">Project description</string>
     <string name="project_description_hint">My project is about…</string>
 
-    <!-- String for activity_facebook_connect -->
+    <!-- Strings for activity_facebook_connect -->
     <string name="starting_line_1">Now introducing</string>
     <string name="starting_line_2">The project management app which makes your life easier !</string>
     <string name="project_button">View current projects</string>
@@ -31,23 +32,23 @@
     <string name="connection_error">Connection failed</string>
     <string name="Uniteam_logo">UniTeam Logo</string>
 
-    <!-- String for activity_project_presentation -->
+    <!-- Strings for activity_project_presentation -->
     <string name="task_button_legend">Tasks</string>
     <string name="meetings_button_legend">Meetings</string>
     <string name="participants_button_legend">Participants</string>
     <string name="reports_button_legend">Reports</string>
     <string name="coming_soon">Coming soon !</string>
 
-    <!-- String for activity_task_kanban -->
+    <!-- Strings for activity_kanban -->
     <string name="todo_task_kanban">TODO</string>
     <string name="doing_task_kanban">DOING</string>
     <string name="done_task_kanban">DONE</string>
 
-    <!-- String for activity_task_description -->
+    <!-- Strings for activity_task_description -->
     <string name="task_description">Description</string>
     <string name="task_current_state">Current state</string>
     <string name="task_deadline">Deadline</string>
-    <string name="task_duration">Scheduled duration</string>
+    <string name="task_duration">"Scheduled duration (number of hours)"</string>
     <string name="task_progress">Task progress</string>
     <string-array name="task_state">
         <item>TODO</item>
@@ -55,5 +56,8 @@
         <item>DONE</item>
     </string-array>
 
+    <!-- Strings for activity_task_add_new -->
+    <string name="add_new_task">Add a new task</string>
+    <string name="new_task_name">Name of the task</string>
 
 </resources>

@@ -9,7 +9,6 @@
     tools:context="unidev.uniteam.AboutUs">
 
     <TextView
-        android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -20,7 +19,6 @@
         android:textSize="30sp" />
 
     <ImageView
-        android:id="@+id/imageView3"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
@@ -30,7 +28,6 @@
         app:srcCompat="@drawable/im_icon_with_light_effect" />
 
     <TextView
-        android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
