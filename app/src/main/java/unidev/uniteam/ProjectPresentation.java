@@ -13,14 +13,17 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class ProjectPresentation extends AppCompatActivity {
+import java.util.HashMap;
+import java.util.Map;
+
+public class ProjectPresentation extends AppCompatActivity implements DatabaseGet.OnJsonTransmitionCompleted {
 
     private int projectID;
 
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         // TODO Uncomment when using database
-        //GetProjectDetails();
+        //GetProjectDetails("project/" + projectID);
     }
 
     @Override
@@ -70,7 +73,6 @@ public class ProjectPresentation extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     @Override
@@ -89,29 +91,24 @@ public class ProjectPresentation extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void GetProjectDetails() {
+    public void GetProjectDetails(String url) {
+        DatabaseGet gj = new DatabaseGet(this);
+        gj.execute(url);
+    }
+
+    public void onTransmitionCompleted(JSONArray jsonArray) {
+
         try {
-            // TODO Put the correct URL complement
-            JSONObject jsonObject = DatabaseConnect.SelectFromDB("GetProjectDetails");
+            TextView projetDescriptionView = (TextView) findViewById(R.id.project_presentation_description);
+            // Pour tous les objets on récupère les infos
+            for (int i = 0; i < jsonArray.length(); i++) {
+                // On récupère un objet JSON du tableau
+                JSONObject obj = new JSONObject(jsonArray.getString(i));
 
-            // On récupère le tableau d'objets qui nous concerne
-            JSONArray array;
-            if (jsonObject != null) {
-                array = new JSONArray(jsonObject.getString("projet"));
-
-                TextView projetDescriptionView = (TextView) findViewById(R.id.project_presentation_description);
-                // Pour tous les objets on récupère les infos
-                for (int i = 0; i < array.length(); i++) {
-                    // On récupère un objet JSON du tableau
-                    JSONObject obj = new JSONObject(array.getString(i));
-                    setTitle(obj.getString("nom"));
-
-                    projetDescriptionView.setText(obj.getString("description"));
-                }
-
-                projetDescriptionView.invalidate();
+                setTitle(obj.getString("nom"));
+                projetDescriptionView.setText(obj.getString("description"));
             }
-
+            projetDescriptionView.invalidate();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,6 +1,7 @@
 package unidev.uniteam;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +23,6 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 public class TaskAddNew extends AppCompatActivity {
@@ -98,7 +98,9 @@ public class TaskAddNew extends AppCompatActivity {
                         //newTaskProgress.put("duree", taskDuration.getText().toString());
 
                         // TODO Put the correct URL complement
-                        DatabaseConnect.InsertIntoDB(newTaskProgress, "CreateTask");
+                        ProgressDialog loading = ProgressDialog.show(TaskAddNew.this, "Please Wait...", null, true, true);
+                        CreateNewTask("utilisateurs", newTaskProgress);
+                        loading.dismiss();
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -141,6 +143,11 @@ public class TaskAddNew extends AppCompatActivity {
         String myFormat = "EEE, d MMM yyyy HH:mm";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.FRANCE);
         deadlineField.setText(sdf.format(deadline.getTime()));
+    }
+
+    private void CreateNewTask(String url, JSONObject jsonObject) {
+        DatabasePost ddbPost = new DatabasePost();
+        ddbPost.execute(url, jsonObject.toString());
     }
 
 }

@@ -33,12 +33,15 @@
             android:label="@string/add_new_project"
             android:theme="@style/AppTheme.EmptyActivity" />
         <activity android:name=".TaskDescription" />
-        <activity android:name=".Kanban" />
+        <activity
+            android:name=".Kanban"
+            android:label="@string/kanban" />
         <activity
             android:name=".AboutUs"
             android:label="@string/about" />
-        <activity android:name=".TaskAddNew"
-            android:label="@string/add_new_task"/>
+        <activity
+            android:name=".TaskAddNew"
+            android:label="@string/add_new_task" />
     </application>
 
 </manifest>

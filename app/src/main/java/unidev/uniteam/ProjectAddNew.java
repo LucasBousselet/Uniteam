@@ -1,5 +1,6 @@
 package unidev.uniteam;
 
+import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -42,15 +43,15 @@ public class ProjectAddNew extends AppCompatActivity {
                         newProject.put("nom", projectNameField.getText().toString());
                         newProject.put("description", projectDescriptionField.getText().toString());
 
-                        // TODO Put the correct URL complement
-                        DatabaseConnect.InsertIntoDB(newProject, "NewProject");
+                        ProgressDialog loading = ProgressDialog.show(ProjectList.this, "Please Wait...", null, true, true);
+                        CreateNewProject("projets", newProject);
+                        loading.dismiss();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                     */
                     finish();
-                }
-                else{
+                } else {
                     Toast.makeText(getApplicationContext(),
                             getResources().getString(R.string.input_error),
                             Toast.LENGTH_SHORT).show();
@@ -59,5 +60,10 @@ public class ProjectAddNew extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void CreateNewProject(String url, JSONObject jsonObject) {
+        DatabasePost ddbPost = new DatabasePost();
+        ddbPost.execute(url, jsonObject.toString());
     }
 }

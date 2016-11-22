@@ -24,7 +24,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class Kanban extends AppCompatActivity {
+public class Kanban extends AppCompatActivity implements DatabaseGet.OnJsonTransmitionCompleted {
 
     private List<Integer> TaskListID = new ArrayList<>();
     private List<String> TaskListName = new ArrayList<>();
@@ -33,8 +33,7 @@ public class Kanban extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         // TODO Uncomment when using DB
-        //GetProjectName();
-        //RefreshProjectDetails();
+        //GetProjectDetails("projet/" + projectID + "/taches");
     }
 
     @Override
@@ -120,28 +119,94 @@ public class Kanban extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void GetProjectName() {
+    public void GetProjectDetails(String url) {
+        DatabaseGet gj = new DatabaseGet(this);
+        gj.execute(url);
+    }
+
+    public void onTransmitionCompleted(JSONArray jsonArray) {
         try {
-            // TODO Put the correct URL complement
-            JSONObject jsonObject = DatabaseConnect.SelectFromDB("GetTasks");
+            LinearLayout todoLayout = (LinearLayout) findViewById(R.id.task_kanban_todo);
+            LinearLayout doingLayout = (LinearLayout) findViewById(R.id.task_kanban_doing);
+            LinearLayout doneLayout = (LinearLayout) findViewById(R.id.task_kanban_done);
 
-            // On récupère le tableau d'objets qui nous concerne
-            JSONArray array;
-            if (jsonObject != null) {
-                array = new JSONArray(jsonObject.getString("projet"));
+            // Clear old TaskListString
+            TaskListID.clear();
+            TaskListName.clear();
+            // Pour tous les objets on récupère les infos
+            for (int i = 0; i < jsonArray.length(); i++) {
+                // On récupère un objet JSON du tableau
+                JSONObject obj = new JSONObject(jsonArray.getString(i));
+                // On fait le lien Task - Objet JSON
+                final int id = obj.getInt("id");
+                TaskListID.add(id);
+                String name = obj.getString("nom");
+                TaskListName.add(name);
 
-                // Pour tous les objets on récupère les infos
-                for (int i = 0; i < array.length(); i++) {
-                    // On récupère un objet JSON du tableau
-                    JSONObject obj = new JSONObject(array.getString(i));
-                    setTitle(obj.getString("nom"));
+                String dateStr = obj.getString("deadlineField");
+                Calendar deadline = Calendar.getInstance();
+                String ackwardRipOff = dateStr.replace("/Date(", "").replace(")/", "");
+                Long timeInMillis = Long.valueOf(ackwardRipOff);
+                deadline.setTimeInMillis(timeInMillis);
+
+                // Create a new linear layout to hold each task
+                LinearLayout taskLayout = new LinearLayout(Kanban.this);
+                taskLayout.setOrientation(LinearLayout.VERTICAL);
+                LinearLayout.LayoutParams layoutparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                layoutparams.setMargins(0, 10, 0, 10);
+                float padding = 10;
+                int dpAsPixels = (int) (padding * getResources().getDisplayMetrics().density + 0.5f);
+                taskLayout.setPadding(dpAsPixels, dpAsPixels, dpAsPixels, dpAsPixels);
+                taskLayout.setLayoutParams(layoutparams);
+                // use a GradientDrawable with only one color set, to make it a solid color
+                GradientDrawable border = new GradientDrawable();
+                border.setColor(0xFFFAFAFA);
+                border.setStroke(5, ContextCompat.getColor(Kanban.this, R.color.uniteamGreen));
+                taskLayout.setBackground(border);
+
+                // Set onClickListener for the layout
+                taskLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent taskDescription = new Intent(Kanban.this, TaskDescription.class);
+                        taskDescription.putExtra("taskID", id);
+                        startActivity(taskDescription);
+                    }
+                });
+
+                TextView nameField = new TextView(Kanban.this);
+                LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                nameField.setLayoutParams(lparams);
+                nameField.setText(name);
+                taskLayout.addView(nameField);
+
+                TextView deadlineField = new TextView(Kanban.this);
+                deadlineField.setLayoutParams(lparams);
+
+                String myFormat = "dd/MM/yyyy HH:mm";
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.FRANCE);
+                deadlineField.setText(sdf.format(deadline.getTime()));
+                taskLayout.addView(deadlineField);
+
+                switch (obj.getString("etat")) {
+                    case "TODO":
+                        todoLayout.addView(taskLayout);
+                    case "DOING":
+                        doingLayout.addView(taskLayout);
+                    case "DONE":
+                        doneLayout.addView(taskLayout);
                 }
             }
+
+            todoLayout.invalidate();
+            doingLayout.invalidate();
+            doneLayout.invalidate();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    /*
     public void RefreshProjectDetails() {
         try {
             // TODO Put the correct URL complement
@@ -232,5 +297,6 @@ public class Kanban extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+    */
 
 }

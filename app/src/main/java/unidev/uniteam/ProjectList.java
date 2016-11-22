@@ -1,5 +1,6 @@
 package unidev.uniteam;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -20,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ProjectList extends AppCompatActivity {
+public class ProjectList extends AppCompatActivity implements DatabaseGet.OnJsonTransmitionCompleted {
 
     private List<Integer> projectID = new ArrayList<>();
     private List<Map<String, String>> projectList = new ArrayList<>();
@@ -28,9 +29,6 @@ public class ProjectList extends AppCompatActivity {
 
     protected void onResume() {
         super.onResume();
-
-        // TODO uncomment when using database
-        //RefreshProjectList();
 
         // TODO comment when using database
         projectList.clear();
@@ -43,6 +41,11 @@ public class ProjectList extends AppCompatActivity {
         am2.put("description", "Sub test 2");
         projectList.add(am2);
         adapterProjectListView.notifyDataSetChanged();
+
+        // TODO uncomment when using database
+        ProgressDialog loading = ProgressDialog.show(ProjectList.this, "Please Wait...", null, true, true);
+        RefreshProjectList("projets");
+        loading.dismiss();
     }
 
     @Override
@@ -107,42 +110,115 @@ public class ProjectList extends AppCompatActivity {
             startActivity(AboutPage);
         } else if (item.getItemId() == R.id.refresh) {
             // TODO Uncomment when using database
-            //RefreshProjectList();
+            RefreshProjectList("projets");
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void RefreshProjectList() {
-        try {
-            // TODO Put the correct URL complement
-            JSONObject jsonObject = DatabaseConnect.SelectFromDB("GetProjects");
-            // On récupère le tableau d'objets qui nous concerne
-            JSONArray array;
-            if (jsonObject != null) {
-                array = new JSONArray(jsonObject.getString("projet"));
+    private void RefreshProjectList(String url) {
+        /* In case not working tomorrow
+        class GetJSON extends AsyncTask<String, Void, String> {
+            private ProgressDialog loading;
 
-                // Clear old projectList
-                projectList.clear();
-                projectID.clear();
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(ProjectList.this, "Please Wait...", null, true, true);
+            }
 
-                // Pour tous les objets on récupère les infos
-                for (int i = 0; i < array.length(); i++) {
-                    // On récupère un objet JSON du tableau
-                    JSONObject obj = new JSONObject(array.getString(i));
-                    // On fait le lien Projet - Objet JSON
-                    Map<String, String> am1 = new HashMap<>(2);
-                    am1.put("name", obj.getString("nom"));
-                    am1.put("description", obj.getString("description"));
-                    projectList.add(am1);
-                    projectID.add(obj.getInt("id"));
+            @Override
+            protected String doInBackground(String... params) {
+
+                String uri = params[0];
+                uri = "http://172.16.24.150/api/v1/" + uri;
+                BufferedReader bufferedReader = null;
+
+                try {
+                    URL url = new URL(uri);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+                    String encoded = Base64.encodeToString(("unidev:unidev").getBytes("UTF-8"), Base64.NO_WRAP);
+                    con.setRequestProperty("Authorization", "Basic " + encoded);
+
+                    StringBuilder sb = new StringBuilder();
+
+                    bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+                    String json;
+                    while ((json = bufferedReader.readLine()) != null) {
+                        sb.append(json);
+                    }
+
+                    return sb.toString().trim();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                try {
+                    JSONArray array = new JSONArray(s);
+
+                    // Clear old projectList
+                    projectList.clear();
+                    projectID.clear();
+
+                    // Pour tous les objets on récupère les infos
+                    for (int i = 0; i < array.length(); i++) {
+                        // On récupère un objet JSON du tableau
+                        JSONObject obj = new JSONObject(array.getString(i));
+                        // On fait le lien Projet - Objet JSON
+                        Map<String, String> am1 = new HashMap<>(2);
+                        am1.put("name", obj.getString("nom"));
+                        am1.put("description", obj.getString("description"));
+                        projectList.add(am1);
+                        projectID.add(obj.getInt("id"));
+                    }
+
+                    // Refresh ListView
+                    adapterProjectListView.notifyDataSetChanged();
+
+                    loading.dismiss();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
-                // Refresh ListView
-                adapterProjectListView.notifyDataSetChanged();
             }
+        }
+        */
+
+        DatabaseGet gj = new DatabaseGet(this);
+        gj.execute(url);
+    }
+
+    public void onTransmitionCompleted(JSONArray jsonArray) {
+        // Clear old projectList
+        projectList.clear();
+        projectID.clear();
+
+        try {
+            // Pour tous les objets on récupère les infos
+            for (int i = 0; i < jsonArray.length(); i++) {
+                // On récupère un objet JSON du tableau
+                JSONObject obj = new JSONObject(jsonArray.getString(i));
+                // On fait le lien Projet - Objet JSON
+                Map<String, String> am1 = new HashMap<>(2);
+                am1.put("name", obj.getString("nom"));
+                am1.put("description", obj.getString("description"));
+                projectList.add(am1);
+                projectID.add(obj.getInt("id"));
+            }
+
+            // Refresh ListView
+            adapterProjectListView.notifyDataSetChanged();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }

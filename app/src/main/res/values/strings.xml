@@ -40,6 +40,7 @@
     <string name="coming_soon">Coming soon !</string>
 
     <!-- Strings for activity_kanban -->
+    <string name="kanban">Kanban</string>
     <string name="todo_task_kanban">TODO</string>
     <string name="doing_task_kanban">DOING</string>
     <string name="done_task_kanban">DONE</string>

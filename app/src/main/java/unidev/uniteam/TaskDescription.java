@@ -1,5 +1,6 @@
 package unidev.uniteam;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,17 +15,13 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.InputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class TaskDescription extends AppCompatActivity {
+public class TaskDescription extends AppCompatActivity implements DatabaseGet.OnJsonTransmitionCompleted {
 
     private int taskID;
     private Map<String, String> hashMapString = new HashMap<>(3);
@@ -34,7 +31,7 @@ public class TaskDescription extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         // TODO Uncomment when using DB
-        //RefreshTaskDescription();
+        //RefreshTaskDescription("taches/" + taskID);
         findViewById(R.id.parentTask).invalidate();
     }
 
@@ -68,7 +65,7 @@ public class TaskDescription extends AppCompatActivity {
             case R.id.validate:
 
                 // TODO Uncomment when using database
-
+                /*
                 try {
                     Spinner taskState = (Spinner) findViewById(R.id.spinner_task_state);
                     SeekBar taskProgress = (SeekBar) findViewById(R.id.task_progress);
@@ -78,13 +75,15 @@ public class TaskDescription extends AppCompatActivity {
                     newTaskProgress.put("etat", taskState.getSelectedItem().toString());
                     newTaskProgress.put("avancement", taskProgress.getProgress());
 
-                    // TODO Put the correct URL complement
-                    DatabaseConnect.InsertIntoDB(newTaskProgress, "SetTask");
+                    // TODO Uncomment when update are implemented
+                    ProgressDialog loading = ProgressDialog.show(TaskDescription.this, "Please Wait...", null, true, true);
+                    //UpdateTaskProgress("utilisateurs", newTaskProgress);
+                    loading.dismiss();
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
+                */
                 finish();
                 return true;
             default:
@@ -92,6 +91,66 @@ public class TaskDescription extends AppCompatActivity {
         }
     }
 
+
+    public void RefreshTaskDescription(String url) {
+        DatabaseGet gj = new DatabaseGet(this);
+        gj.execute(url);
+    }
+
+    public void onTransmitionCompleted(JSONArray jsonArray) {
+        try {
+            String myFormat = "EEE, d MMM yyyy HH:mm";
+            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.FRANCE);
+
+            // Pour tous les objets on récupère les infos
+            for (int i = 0; i < jsonArray.length(); i++) {
+                // On récupère un objet JSON du tableau
+                JSONObject obj = new JSONObject(jsonArray.getString(i));
+                // On fait le lien Projet - Objet JSON
+                hashMapString.put("name", obj.getString("nom"));
+                hashMapString.put("description", obj.getString("description"));
+                hashMapString.put("etat", obj.getString("etat"));
+
+                hashMapInt.put("id", obj.getInt("id"));
+                hashMapInt.put("progress", obj.getInt("avancement"));
+                hashMapInt.put("duration", obj.getInt("duree"));
+
+                String dateStr = obj.getString("deadlineField");
+                deadline = Calendar.getInstance();
+                String ackwardRipOff = dateStr.replace("/Date(", "").replace(")/", "");
+                Long timeInMillis = Long.valueOf(ackwardRipOff);
+                deadline.setTimeInMillis(timeInMillis);
+            }
+            setTitle(hashMapString.get("nom"));
+
+            TextView taskDescription = (TextView) findViewById(R.id.task_description_text);
+            taskDescription.setText(hashMapString.get("description"));
+
+            TextView taskDeadline = (TextView) findViewById(R.id.task_deadline);
+            taskDeadline.setText(sdf.format(deadline.getTime()));
+
+            TextView taskDuration = (TextView) findViewById(R.id.task_duration);
+            taskDuration.setText(hashMapInt.get("duration"));
+
+            Spinner taskState = (Spinner) findViewById(R.id.spinner_task_state);
+
+            String compareValue = hashMapString.get("etat");
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.task_state, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            taskState.setAdapter(adapter);
+            if (compareValue != null) {
+                int spinnerPosition = adapter.getPosition(compareValue);
+                taskState.setSelection(spinnerPosition);
+            }
+
+            SeekBar taskProgress = (SeekBar) findViewById(R.id.task_progress);
+            taskProgress.setProgress(hashMapInt.get("progress"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /*
     public void RefreshTaskDescription() {
         try {
             // On récupère le JSON complet
@@ -153,6 +212,14 @@ public class TaskDescription extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    */
+
+    private void UpdateTaskProgress(String url, JSONObject jsonObject) {
+        /*
+        DatabasePost ddbPost = new DatabasePost();
+        ddbPost.execute(url, jsonObject.toString());
+        */
     }
 
 }

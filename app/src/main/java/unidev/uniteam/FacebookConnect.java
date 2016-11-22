@@ -1,5 +1,6 @@
 package unidev.uniteam;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,11 +22,6 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONObject;
-
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Arrays;
 
 public class FacebookConnect extends AppCompatActivity {
 
@@ -55,8 +51,9 @@ public class FacebookConnect extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         if (AccessToken.getCurrentAccessToken() != null) {
-            loginButton.setVisibility(View.GONE);
-            projectButton.setVisibility(View.VISIBLE);
+            // TODO uncomment when ok
+            //loginButton.setVisibility(View.GONE);
+            //projectButton.setVisibility(View.VISIBLE);
         }
     }
 
@@ -83,11 +80,8 @@ public class FacebookConnect extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Toast.makeText(getApplicationContext(),
-                        getResources().getString(R.string.connection_successful),
-                        Toast.LENGTH_SHORT).show();
+
                 // TODO Uncomment when usng DB
-                /*
                 GraphRequest request = GraphRequest.newMeRequest(
                         AccessToken.getCurrentAccessToken(),
                         new GraphRequest.GraphJSONObjectCallback() {
@@ -97,13 +91,18 @@ public class FacebookConnect extends AppCompatActivity {
                                     GraphResponse response) {
                                 try {
                                     JSONObject newUser = new JSONObject();
+                                    newUser.put("facebook", object.getString("id"));
                                     newUser.put("token", AccessToken.getCurrentAccessToken());
-                                    newUser.put("prenom", object.getString("first_name"));
                                     newUser.put("nom", object.getString("last_name"));
+                                    newUser.put("prenom", object.getString("first_name"));
                                     newUser.put("email", object.getString("email"));
+                                    newUser.put("created_at", null);
+                                    newUser.put("updated_at", null);
 
                                     // TODO Put the correct URL complement
-                                    DatabaseConnect.InsertIntoDB(newUser,"SetTask");
+                                    ProgressDialog loading = ProgressDialog.show(FacebookConnect.this, "Please Wait...", null, true, true);
+                                    CreateNewUser("utilisateurs", newUser);
+                                    loading.dismiss();
 
                                 } catch (Exception e) {
                                     e.printStackTrace();
@@ -114,7 +113,10 @@ public class FacebookConnect extends AppCompatActivity {
                 parameters.putString("fields", "id,first_name,last_name,email");
                 request.setParameters(parameters);
                 request.executeAsync();
-                */
+
+                Toast.makeText(getApplicationContext(),
+                        getResources().getString(R.string.connection_successful),
+                        Toast.LENGTH_SHORT).show();
 
                 Intent ProjectList = new Intent(FacebookConnect.this, ProjectList.class);
                 startActivity(ProjectList);
@@ -160,9 +162,9 @@ public class FacebookConnect extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+    private void CreateNewUser(String url, JSONObject jsonObject) {
+        DatabasePost ddbPost = new DatabasePost();
+        ddbPost.execute(url, jsonObject.toString());
     }
 
 }
