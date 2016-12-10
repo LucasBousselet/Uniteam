@@ -21,11 +21,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ProjectList extends AppCompatActivity implements DatabaseGet.OnJsonTransmitionCompleted {
+public class ProjectList extends AppCompatActivity implements DatabaseGet.OnJsonTransmissionCompleted {
 
     private List<Integer> projectID = new ArrayList<>();
     private List<Map<String, String>> projectList = new ArrayList<>();
     private SimpleAdapter adapterProjectListView = null;
+    private String userId;
 
     protected void onResume() {
         super.onResume();
@@ -44,7 +45,7 @@ public class ProjectList extends AppCompatActivity implements DatabaseGet.OnJson
 
         // TODO uncomment when using database
         ProgressDialog loading = ProgressDialog.show(ProjectList.this, "Please Wait...", null, true, true);
-        RefreshProjectList("projets");
+        //RefreshProjectList("projets");
         loading.dismiss();
     }
 
@@ -52,9 +53,13 @@ public class ProjectList extends AppCompatActivity implements DatabaseGet.OnJson
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_list);
+
+        Intent intent = getIntent();
+        // TODO uncomment when using database
+        //userId = intent.getStringExtra("userId");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         ListView projectListView = (ListView) findViewById(R.id.project_list);
 
         adapterProjectListView = new SimpleAdapter(this, projectList,
@@ -65,9 +70,7 @@ public class ProjectList extends AppCompatActivity implements DatabaseGet.OnJson
 
         projectListView.setAdapter(adapterProjectListView);
 
-        /*
-         * Floating action button used to launch a new activity to add a new project
-         */
+        // Floating action button used to launch a new activity to add a new project
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,10 +80,6 @@ public class ProjectList extends AppCompatActivity implements DatabaseGet.OnJson
             }
         });
 
-        /*
-         * Defines the list of Project as an OnItemCLickListener
-         * So that we can call a event when an item of the list is clicked
-         */
         projectListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
@@ -110,7 +109,7 @@ public class ProjectList extends AppCompatActivity implements DatabaseGet.OnJson
             startActivity(AboutPage);
         } else if (item.getItemId() == R.id.refresh) {
             // TODO Uncomment when using database
-            RefreshProjectList("projets");
+            //RefreshProjectList("projets");
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -193,13 +192,15 @@ public class ProjectList extends AppCompatActivity implements DatabaseGet.OnJson
         */
 
         DatabaseGet gj = new DatabaseGet(this);
-        gj.execute(url);
+        gj.execute(url, "projets");
     }
 
-    public void onTransmitionCompleted(JSONArray jsonArray) {
+    public void onTransmissionCompleted(DatabaseGetResult result) {
         // Clear old projectList
         projectList.clear();
         projectID.clear();
+
+        JSONArray jsonArray = result.getData();
 
         try {
             // Pour tous les objets on récupère les infos

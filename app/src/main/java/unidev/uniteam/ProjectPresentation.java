@@ -13,17 +13,14 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class ProjectPresentation extends AppCompatActivity implements DatabaseGet.OnJsonTransmitionCompleted {
+public class ProjectPresentation extends AppCompatActivity implements DatabaseGet.OnJsonTransmissionCompleted {
 
     private int projectID;
 
     protected void onResume() {
         super.onResume();
         // TODO Uncomment when using database
-        //GetProjectDetails("project/" + projectID);
+        GetProjectDetails("project/" + projectID);
     }
 
     @Override
@@ -93,10 +90,12 @@ public class ProjectPresentation extends AppCompatActivity implements DatabaseGe
 
     public void GetProjectDetails(String url) {
         DatabaseGet gj = new DatabaseGet(this);
-        gj.execute(url);
+        gj.execute(url, "projets");
     }
 
-    public void onTransmitionCompleted(JSONArray jsonArray) {
+    public void onTransmissionCompleted(DatabaseGetResult result) {
+
+        JSONArray jsonArray = result.getData();
 
         try {
             TextView projetDescriptionView = (TextView) findViewById(R.id.project_presentation_description);

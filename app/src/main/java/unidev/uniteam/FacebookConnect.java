@@ -52,8 +52,8 @@ public class FacebookConnect extends AppCompatActivity {
         super.onResume();
         if (AccessToken.getCurrentAccessToken() != null) {
             // TODO uncomment when ok
-            //loginButton.setVisibility(View.GONE);
-            //projectButton.setVisibility(View.VISIBLE);
+            loginButton.setVisibility(View.GONE);
+            projectButton.setVisibility(View.VISIBLE);
         }
     }
 
@@ -74,24 +74,23 @@ public class FacebookConnect extends AppCompatActivity {
 
         projectButton = (Button) findViewById(R.id.project_button);
         // TODO put back at the end of the Project
-        //projectButton.setVisibility(View.INVISIBLE);
+        projectButton.setVisibility(View.INVISIBLE);
         callbackManager = CallbackManager.Factory.create();
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-
-                // TODO Uncomment when usng DB
                 GraphRequest request = GraphRequest.newMeRequest(
                         AccessToken.getCurrentAccessToken(),
                         new GraphRequest.GraphJSONObjectCallback() {
                             @Override
-                            public void onCompleted(
-                                    JSONObject object,
-                                    GraphResponse response) {
+                            public void onCompleted(JSONObject object, GraphResponse response) {
                                 try {
+                                    ProgressDialog loading = ProgressDialog.show(FacebookConnect.this, "Please Wait...", null, true, true);
                                     JSONObject newUser = new JSONObject();
-                                    newUser.put("facebook", object.getString("id"));
+
+                                    String userId = object.getString("id");
+                                    newUser.put("facebook", userId);
                                     newUser.put("token", AccessToken.getCurrentAccessToken());
                                     newUser.put("nom", object.getString("last_name"));
                                     newUser.put("prenom", object.getString("first_name"));
@@ -99,11 +98,11 @@ public class FacebookConnect extends AppCompatActivity {
                                     newUser.put("created_at", null);
                                     newUser.put("updated_at", null);
 
-                                    // TODO Put the correct URL complement
-                                    ProgressDialog loading = ProgressDialog.show(FacebookConnect.this, "Please Wait...", null, true, true);
-                                    CreateNewUser("utilisateurs", newUser);
-                                    loading.dismiss();
+                                    // TODO Uncomment when usng DB
 
+                                    CreateNewUser("utilisateurs", newUser);
+
+                                    loading.dismiss();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -165,6 +164,19 @@ public class FacebookConnect extends AppCompatActivity {
     private void CreateNewUser(String url, JSONObject jsonObject) {
         DatabasePost ddbPost = new DatabasePost();
         ddbPost.execute(url, jsonObject.toString());
+    }
+
+    /**
+     * Used to handle FacebookLogin Button callback
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
 }

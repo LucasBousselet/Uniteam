@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class TaskDescription extends AppCompatActivity implements DatabaseGet.OnJsonTransmitionCompleted {
+public class TaskDescription extends AppCompatActivity implements DatabaseGet.OnJsonTransmissionCompleted {
 
     private int taskID;
     private Map<String, String> hashMapString = new HashMap<>(3);
@@ -91,13 +91,15 @@ public class TaskDescription extends AppCompatActivity implements DatabaseGet.On
         }
     }
 
-
     public void RefreshTaskDescription(String url) {
         DatabaseGet gj = new DatabaseGet(this);
         gj.execute(url);
     }
 
-    public void onTransmitionCompleted(JSONArray jsonArray) {
+    public void onTransmissionCompleted(DatabaseGetResult result) {
+
+        JSONArray jsonArray = result.getData();
+
         try {
             String myFormat = "EEE, d MMM yyyy HH:mm";
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.FRANCE);
@@ -149,6 +151,8 @@ public class TaskDescription extends AppCompatActivity implements DatabaseGet.On
             e.printStackTrace();
         }
     }
+
+    // SECTION KEPT JUST IN CASE
 
     /*
     public void RefreshTaskDescription() {
