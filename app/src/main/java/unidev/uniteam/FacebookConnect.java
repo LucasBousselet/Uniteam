@@ -74,19 +74,19 @@ public class FacebookConnect extends AppCompatActivity {
 
         projectButton = (Button) findViewById(R.id.project_button);
         // TODO put back at the end of the Project
-        projectButton.setVisibility(View.INVISIBLE);
+        //projectButton.setVisibility(View.INVISIBLE);
         callbackManager = CallbackManager.Factory.create();
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                GraphRequest request = GraphRequest.newMeRequest(
+                /*GraphRequest request = GraphRequest.newMeRequest(
                         AccessToken.getCurrentAccessToken(),
                         new GraphRequest.GraphJSONObjectCallback() {
                             @Override
                             public void onCompleted(JSONObject object, GraphResponse response) {
                                 try {
-                                    ProgressDialog loading = ProgressDialog.show(FacebookConnect.this, "Please Wait...", null, true, true);
+                                    //ProgressDialog loading = ProgressDialog.show(FacebookConnect.this, "Please Wait...", null, true, true);
                                     JSONObject newUser = new JSONObject();
 
                                     String userId = object.getString("id");
@@ -102,16 +102,16 @@ public class FacebookConnect extends AppCompatActivity {
 
                                     CreateNewUser("utilisateurs", newUser);
 
-                                    loading.dismiss();
+                                    //loading.dismiss();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }
-                        });
+                        });*/
                 Bundle parameters = new Bundle();
                 parameters.putString("fields", "id,first_name,last_name,email");
-                request.setParameters(parameters);
-                request.executeAsync();
+                //request.setParameters(parameters);
+                //request.executeAsync();
 
                 Toast.makeText(getApplicationContext(),
                         getResources().getString(R.string.connection_successful),
