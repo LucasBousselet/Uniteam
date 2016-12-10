@@ -26,11 +26,13 @@
             android:name=".ProjectList"
             android:label="@string/project_list_label"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ProjectPresentation" />
+        <activity
+            android:name=".ProjectPresentation" />
         <activity
             android:name=".ProjectAddNew"
             android:label="@string/add_new_project"/>
-        <activity android:name=".TaskDescription" />
+        <activity
+            android:name=".TaskDescription" />
         <activity
             android:name=".Kanban"
             android:label="@string/kanban" />
@@ -40,6 +42,9 @@
         <activity
             android:name=".TaskAddNew"
             android:label="@string/add_new_task" />
+        <activity
+            android:name=".ParticipantsList"
+            android:label="Participants List"/>
     </application>
 
 </manifest>

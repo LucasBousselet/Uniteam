@@ -61,4 +61,7 @@
     <string name="add_new_task">Add a new task</string>
     <string name="new_task_name">Name of the task</string>
 
+    <!-- Strings for activity_participants -->
+    <string name="label_participants">List of project members :</string>
+
 </resources>

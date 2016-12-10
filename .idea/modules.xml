@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/UniTeam.iml" filepath="$PROJECT_DIR$/UniTeam.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Uniteam.iml" filepath="$PROJECT_DIR$/Uniteam.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
