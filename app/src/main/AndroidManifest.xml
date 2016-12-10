@@ -15,8 +15,7 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name=".FacebookConnect"
-            android:theme="@style/AppTheme.EmptyActivity">
+            android:name=".FacebookConnect">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,8 +29,7 @@
         <activity android:name=".ProjectPresentation" />
         <activity
             android:name=".ProjectAddNew"
-            android:label="@string/add_new_project"
-            android:theme="@style/AppTheme.EmptyActivity" />
+            android:label="@string/add_new_project"/>
         <activity android:name=".TaskDescription" />
         <activity
             android:name=".Kanban"

@@ -215,9 +215,7 @@ public class Kanban extends AppCompatActivity implements DatabaseGet.OnJsonTrans
                             doneLayout.addView(taskLayout);
                     }
                 }
-
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }

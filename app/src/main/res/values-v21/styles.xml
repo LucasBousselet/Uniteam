@@ -9,9 +9,4 @@
         <item name="colorPrimary">@color/uniteamGreen</item>
     </style>
 
-    <style name="AppTheme.EmptyActivity">
-        <item name="colorPrimaryDark">@color/uniteamGreenDark</item>
-        <item name="colorPrimary">@color/uniteamGreen</item>
-    </style>
-
 </resources>

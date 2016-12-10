@@ -80,7 +80,7 @@ public class FacebookConnect extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                /*GraphRequest request = GraphRequest.newMeRequest(
+                GraphRequest request = GraphRequest.newMeRequest(
                         AccessToken.getCurrentAccessToken(),
                         new GraphRequest.GraphJSONObjectCallback() {
                             @Override
@@ -107,7 +107,7 @@ public class FacebookConnect extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
                             }
-                        });*/
+                        });
                 Bundle parameters = new Bundle();
                 parameters.putString("fields", "id,first_name,last_name,email");
                 //request.setParameters(parameters);
@@ -160,6 +160,14 @@ public class FacebookConnect extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState)
+    {
+        /*savedInstanceState.putInt("seconds", seconds);
+        savedInstanceState.putBoolean("running", running);*/
+    }
+
 
     private void CreateNewUser(String url, JSONObject jsonObject) {
         DatabasePost ddbPost = new DatabasePost();
