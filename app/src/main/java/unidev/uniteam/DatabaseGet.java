@@ -12,9 +12,10 @@ import java.net.URL;
 
 class DatabaseGet extends AsyncTask<String, Void, String> {
 
-    private OnJsonTransmitionCompleted mCallback;
+    private OnJsonTransmissionCompleted mCallback;
+    private String requestType;
 
-    DatabaseGet(OnJsonTransmitionCompleted callback) {
+    DatabaseGet(OnJsonTransmissionCompleted callback) {
         this.mCallback = callback;
     }
 
@@ -26,31 +27,34 @@ class DatabaseGet extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
 
-        String uri = params[0];
-        uri = "http://172.16.24.150/api/v1/" + uri;
-        BufferedReader bufferedReader;
+        requestType = params[1];
+        String uri = "http://172.16.24.150/api/v1/" + params[0];
+        HttpURLConnection urlConnection = null;
 
         try {
             URL url = new URL(uri);
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection = (HttpURLConnection) url.openConnection();
 
             String encoded = Base64.encodeToString(("unidev:unidev").getBytes("UTF-8"), Base64.NO_WRAP);
             urlConnection.setRequestProperty("Authorization", "Basic " + encoded);
             urlConnection.setConnectTimeout(5000);
             urlConnection.setReadTimeout(5000);
 
-            StringBuilder sb = new StringBuilder();
-            bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+            StringBuilder stringBuilder = new StringBuilder();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 
-            String get;
-            while ((get = bufferedReader.readLine()) != null) {
-                sb.append(get);
+            String result;
+            while ((result = bufferedReader.readLine()) != null) {
+                stringBuilder.append(result);
             }
-
-            return sb.toString().trim();
+            return stringBuilder.toString().trim();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (urlConnection != null) {
+                urlConnection.disconnect();
+            }
         }
         return null;
     }
@@ -59,14 +63,15 @@ class DatabaseGet extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         try {
-            this.mCallback.onTransmitionCompleted(new JSONArray(s));
+            DatabaseGetResult result = new DatabaseGetResult(requestType, new JSONArray(s));
+            this.mCallback.onTransmissionCompleted(result);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    interface OnJsonTransmitionCompleted {
-        void onTransmitionCompleted(JSONArray JSONArray);
+    interface OnJsonTransmissionCompleted {
+        void onTransmissionCompleted(DatabaseGetResult getResult);
     }
 
 }
