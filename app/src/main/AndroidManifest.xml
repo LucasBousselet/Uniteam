@@ -30,8 +30,6 @@
             android:name=".ProjectPresentation" />
         <activity
             android:name=".ProjectAddNew"
-            android:label="@string/add_new_project" />
-        <activity android:name=".TaskDescription" />
             android:label="@string/add_new_project"/>
         <activity
             android:name=".TaskDescription" />
@@ -47,13 +45,16 @@
         <activity
             android:name=".MeetingsList"
             android:label="@string/meetings" />
-        <activity android:name=".MeetingDetails" />
-        <activity android:name=".MeetingAddNew" />
-
-        <service android:name=".ScheduleService" />
-        <service android:name=".NotifyService" />
+        <activity
+            android:name=".MeetingDetails" />
+        <activity
+            android:name=".MeetingAddNew" />
+        <activity
             android:name=".ParticipantsList"
             android:label="Participants List"/>
+        <service android:name=".ScheduleService" />
+        <service android:name=".NotifyService" />
+
     </application>
 
 </manifest>
