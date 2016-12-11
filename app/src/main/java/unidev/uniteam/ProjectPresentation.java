@@ -62,9 +62,11 @@ public class ProjectPresentation extends AppCompatActivity implements DatabaseGe
         participantsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),
-                        getResources().getString(R.string.coming_soon),
-                        Toast.LENGTH_SHORT).show();
+                Intent intentParticipant = new Intent(ProjectPresentation.this, ParticipantsList.class);
+                // TODO Uncomment and complete when using DB
+                //intentParticipant.putExtra("ParticipantName", participantName);
+                //intentParticipant.putExtra("ParticipantMail", participantMail);
+                startActivity(intentParticipant);
             }
         });
 

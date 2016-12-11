@@ -60,5 +60,7 @@
     <!-- Strings for NotifyService -->
     <string name="notification_title">Uniteam notification</string>
     <string name="notification_content">Vous avez une réunion bientôt</string>
+    <!-- Strings for activity_participants -->
+    <string name="label_participants">Liste des participants au projet :</string>
 
 </resources>
