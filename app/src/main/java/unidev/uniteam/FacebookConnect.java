@@ -28,6 +28,7 @@ public class FacebookConnect extends AppCompatActivity {
     private LoginButton loginButton;
     private CallbackManager callbackManager;
     private Button projectButton;
+    private String facebookUserID;
 
     /*
     * Shouldn't be necessary, to delete WHEN SURE !
@@ -86,10 +87,11 @@ public class FacebookConnect extends AppCompatActivity {
                             @Override
                             public void onCompleted(JSONObject object, GraphResponse response) {
                                 try {
-                                    //ProgressDialog loading = ProgressDialog.show(FacebookConnect.this, "Please Wait...", null, true, true);
                                     JSONObject newUser = new JSONObject();
 
                                     String userId = object.getString("id");
+                                    facebookUserID = userId;
+
                                     newUser.put("facebook", userId);
                                     newUser.put("token", AccessToken.getCurrentAccessToken());
                                     newUser.put("nom", object.getString("last_name"));
@@ -101,8 +103,6 @@ public class FacebookConnect extends AppCompatActivity {
                                     // TODO Uncomment when usng DB
 
                                     CreateNewUser("utilisateurs", newUser);
-
-                                    //loading.dismiss();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -110,8 +110,8 @@ public class FacebookConnect extends AppCompatActivity {
                         });
                 Bundle parameters = new Bundle();
                 parameters.putString("fields", "id,first_name,last_name,email");
-                //request.setParameters(parameters);
-                //request.executeAsync();
+                request.setParameters(parameters);
+                request.executeAsync();
 
                 Toast.makeText(getApplicationContext(),
                         getResources().getString(R.string.connection_successful),
@@ -140,6 +140,7 @@ public class FacebookConnect extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent ProjectList = new Intent(FacebookConnect.this, ProjectList.class);
+                ProjectList.putExtra("CurrentUser", facebookUserID);
                 startActivity(ProjectList);
             }
         });
@@ -161,14 +162,6 @@ public class FacebookConnect extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState)
-    {
-        /*savedInstanceState.putInt("seconds", seconds);
-        savedInstanceState.putBoolean("running", running);*/
-    }
-
-
     private void CreateNewUser(String url, JSONObject jsonObject) {
         DatabasePost ddbPost = new DatabasePost();
         ddbPost.execute(url, jsonObject.toString());
@@ -186,5 +179,4 @@ public class FacebookConnect extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
-
 }

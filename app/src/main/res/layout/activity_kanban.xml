@@ -4,13 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_horizontal_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_horizontal_margin"
     tools:context="unidev.uniteam.Kanban">
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabKanban"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/fab_margin"
+        app:backgroundTint="@color/uniteamGreen"
+        app:srcCompat="@drawable/ic_add_button"
+        tools:ignore="RelativeOverlap"
+        android:layout_weight="1" />
+
     <ScrollView
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
         android:id="@+id/activity_task_kanban"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -163,19 +177,7 @@
                 </LinearLayout>
             </LinearLayout>
         </HorizontalScrollView>
-    </ScrollView>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_alignBottom="@id/activity_task_kanban"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="@color/uniteamGreen"
-        app:srcCompat="@drawable/ic_add_button"
-        tools:ignore="RelativeOverlap" />
+    </ScrollView>
 
 </RelativeLayout>

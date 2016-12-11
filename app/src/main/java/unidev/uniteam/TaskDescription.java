@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class TaskDescription extends AppCompatActivity implements DatabaseGet.OnJsonTransmissionCompleted {
 
-    private int taskID;
+    private String CurrentTaskID;
     private Map<String, String> hashMapString = new HashMap<>(3);
     private Map<String, Integer> hashMapInt = new HashMap<>(3);
     private Calendar deadline;
@@ -31,7 +31,7 @@ public class TaskDescription extends AppCompatActivity implements DatabaseGet.On
     protected void onResume() {
         super.onResume();
         // TODO Uncomment when using DB
-        //RefreshTaskDescription("taches/" + taskID);
+        //RefreshMeetingsDescription("taches/" + CurrentTaskID);
         findViewById(R.id.parentTask).invalidate();
     }
 
@@ -40,8 +40,14 @@ public class TaskDescription extends AppCompatActivity implements DatabaseGet.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_description);
 
-        Intent intent = getIntent();
-        taskID = intent.getIntExtra("taskID", -1);
+        if (savedInstanceState != null) {
+            // TODO uncomment when using database
+            //CurrentTaskID = savedInstanceState.getString("CurrentTaskID");
+        } else {
+            Intent intent = getIntent();
+            // TODO uncomment when using database
+            //CurrentTaskID = getIntent().getStringExtra("CurrentTaskID");
+        }
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner_task_state);
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -155,7 +161,7 @@ public class TaskDescription extends AppCompatActivity implements DatabaseGet.On
     // SECTION KEPT JUST IN CASE
 
     /*
-    public void RefreshTaskDescription() {
+    public void RefreshMeetingsDescription() {
         try {
             // On récupère le JSON complet
             // TODO Put the correct URL complement

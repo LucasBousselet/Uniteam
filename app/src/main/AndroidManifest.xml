@@ -6,6 +6,7 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -14,8 +15,7 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity
-            android:name=".FacebookConnect">
+        <activity android:name=".FacebookConnect">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +29,7 @@
         <activity android:name=".ProjectPresentation" />
         <activity
             android:name=".ProjectAddNew"
-            android:label="@string/add_new_project"/>
+            android:label="@string/add_new_project" />
         <activity android:name=".TaskDescription" />
         <activity
             android:name=".Kanban"
@@ -40,6 +40,14 @@
         <activity
             android:name=".TaskAddNew"
             android:label="@string/add_new_task" />
+        <activity
+            android:name=".MeetingsList"
+            android:label="@string/meetings" />
+        <activity android:name=".MeetingDetails" />
+        <activity android:name=".MeetingAddNew" />
+
+        <service android:name=".ScheduleService" />
+        <service android:name=".NotifyService" />
     </application>
 
 </manifest>

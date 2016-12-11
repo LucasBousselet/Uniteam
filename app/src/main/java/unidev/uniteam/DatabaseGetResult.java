@@ -2,12 +2,12 @@ package unidev.uniteam;
 
 import org.json.JSONArray;
 
-public class DatabaseGetResult {
+class DatabaseGetResult {
 
     private String returnedObject;
     private JSONArray data;
 
-    public String getReturnedType() {
+    String getReturnedType() {
         return returnedObject;
     }
 
@@ -15,7 +15,7 @@ public class DatabaseGetResult {
         return data;
     }
 
-    public DatabaseGetResult(String returnedObject, JSONArray data) {
+    DatabaseGetResult(String returnedObject, JSONArray data) {
         this.returnedObject = returnedObject;
         this.data = data;
     }

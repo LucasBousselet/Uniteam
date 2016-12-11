@@ -77,14 +77,12 @@ public class TaskAddNew extends AppCompatActivity {
                 Spinner taskState = (Spinner) findViewById(R.id.new_spinner_task_state);
                 SeekBar taskProgress = (SeekBar) findViewById(R.id.new_task_progress);
 
-
                 if (!taskName.getText().toString().matches("") &&
                         !taskDescription.getText().toString().matches("") &&
                         !taskDuration.getText().toString().matches("") &&
                         !taskDeadline.getText().toString().matches("")) {
 
                     // TODO Uncomment when using database
-
                     try {
                         JSONObject newTaskProgress = new JSONObject();
 
@@ -99,7 +97,7 @@ public class TaskAddNew extends AppCompatActivity {
 
                         // TODO Put the correct URL complement
                         ProgressDialog loading = ProgressDialog.show(TaskAddNew.this, "Please Wait...", null, true, true);
-                        CreateNewTask("utilisateurs", newTaskProgress);
+                        CreateNewTask("taches", newTaskProgress);
                         loading.dismiss();
 
                     } catch (Exception e) {

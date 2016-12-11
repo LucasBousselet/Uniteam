@@ -24,14 +24,14 @@ import java.util.Locale;
 
 public class Kanban extends AppCompatActivity implements DatabaseGet.OnJsonTransmissionCompleted {
 
-    private List<Integer> TaskListID = new ArrayList<>();
-    private List<String> TaskListName = new ArrayList<>();
-    private int projectID;
+    private List<Integer> taskListID = new ArrayList<>();
+    private List<String> taskListName = new ArrayList<>();
+    private String currentProjectID;
 
     protected void onResume() {
         super.onResume();
         // TODO Uncomment when using DB
-        getTasks("projet/" + projectID + "/taches");
+        getTasks("projet/" + currentProjectID + "/taches");
     }
 
     @Override
@@ -39,12 +39,18 @@ public class Kanban extends AppCompatActivity implements DatabaseGet.OnJsonTrans
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kanban);
 
-        Intent intent = getIntent();
-        //projectID = intent.getIntExtra("ProjectID", -1);
+        if (savedInstanceState != null) {
+            // TODO uncomment when using database
+            //currentProjectID = savedInstanceState.getString("currentProjectID");
+        } else {
+            Intent intent = getIntent();
+            // TODO uncomment when using database
+            //currentProjectID = getIntent().getStringExtra("currentProjectID");
+        }
 
-        getProjectsName("projets/" + projectID);
+        getProjectsName("projets/" + currentProjectID);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabKanban);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,8 +115,8 @@ public class Kanban extends AppCompatActivity implements DatabaseGet.OnJsonTrans
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         if (item.getItemId() == R.id.action_about) {
-            Intent AboutPage = new Intent(Kanban.this, AboutUs.class);
-            startActivity(AboutPage);
+            Intent aboutPage = new Intent(Kanban.this, AboutUs.class);
+            startActivity(aboutPage);
         } else if (item.getItemId() == R.id.refresh) {
 
             // TODO Uncomment when using DB
@@ -119,6 +125,14 @@ public class Kanban extends AppCompatActivity implements DatabaseGet.OnJsonTrans
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        if (savedInstanceState.getString("currentProjectID") != null) {
+            savedInstanceState.remove("currentProjectID");
+        }
+        savedInstanceState.putString("currentProjectID", currentProjectID);
     }
 
     public void getProjectsName(String url) {
@@ -149,17 +163,17 @@ public class Kanban extends AppCompatActivity implements DatabaseGet.OnJsonTrans
                 LinearLayout doneLayout = (LinearLayout) findViewById(R.id.task_kanban_done);
 
                 // Clear old TaskListString
-                TaskListID.clear();
-                TaskListName.clear();
+                taskListID.clear();
+                taskListName.clear();
                 // Pour tous les objets on récupère les infos
                 for (int i = 0; i < jsonArray.length(); i++) {
                     // On récupère un objet JSON du tableau
                     JSONObject obj = new JSONObject(jsonArray.getString(i));
                     // On fait le lien Task - Objet JSON
                     final int id = obj.getInt("id");
-                    TaskListID.add(id);
+                    taskListID.add(id);
                     String name = obj.getString("nom");
-                    TaskListName.add(name);
+                    taskListName.add(name);
 
                     String dateStr = obj.getString("deadlineField");
                     Calendar deadline = Calendar.getInstance();
@@ -229,17 +243,17 @@ public class Kanban extends AppCompatActivity implements DatabaseGet.OnJsonTrans
             LinearLayout doneLayout = (LinearLayout) findViewById(R.id.task_kanban_done);
 
             // Clear old TaskListString
-            TaskListID.clear();
-            TaskListName.clear();
+            taskListID.clear();
+            taskListName.clear();
             // Pour tous les objets on récupère les infos
             for (int i = 0; i < jsonArray.length(); i++) {
                 // On récupère un objet JSON du tableau
                 JSONObject obj = new JSONObject(jsonArray.getString(i));
                 // On fait le lien Task - Objet JSON
                 final int id = obj.getInt("id");
-                TaskListID.add(id);
+                taskListID.add(id);
                 String name = obj.getString("nom");
-                TaskListName.add(name);
+                taskListName.add(name);
 
                 String dateStr = obj.getString("deadlineField");
                 Calendar deadline = Calendar.getInstance();
@@ -321,17 +335,17 @@ public class Kanban extends AppCompatActivity implements DatabaseGet.OnJsonTrans
                 LinearLayout doneLayout = (LinearLayout) findViewById(R.id.task_kanban_done);
 
                 // Clear old TaskListString
-                TaskListID.clear();
-                TaskListName.clear();
+                taskListID.clear();
+                taskListName.clear();
                 // Pour tous les objets on récupère les infos
                 for (int i = 0; i < array.length(); i++) {
                     // On récupère un objet JSON du tableau
                     JSONObject obj = new JSONObject(array.getString(i));
                     // On fait le lien Task - Objet JSON
                     final int id = obj.getInt("id");
-                    TaskListID.add(id);
+                    taskListID.add(id);
                     String name = obj.getString("nom");
-                    TaskListName.add(name);
+                    taskListName.add(name);
 
                     String dateStr = obj.getString("deadlineField");
                     Calendar deadline = Calendar.getInstance();

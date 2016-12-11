@@ -26,7 +26,7 @@ public class ProjectList extends AppCompatActivity implements DatabaseGet.OnJson
     private List<Integer> projectID = new ArrayList<>();
     private List<Map<String, String>> projectList = new ArrayList<>();
     private SimpleAdapter adapterProjectListView = null;
-    private String userId;
+    private String facebookUserID;
 
     protected void onResume() {
         super.onResume();
@@ -54,9 +54,15 @@ public class ProjectList extends AppCompatActivity implements DatabaseGet.OnJson
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_list);
 
-        Intent intent = getIntent();
-        // TODO uncomment when using database
-        //userId = intent.getStringExtra("userId");
+        if (savedInstanceState != null) {
+            // TODO uncomment when using database
+            //facebookUserID = savedInstanceState.getString("CurrentUser");
+        }
+        else {
+            Intent intent = getIntent();
+            // TODO uncomment when using database
+            //facebookUserID = intent.getStringExtra("facebookUserID");
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -71,7 +77,7 @@ public class ProjectList extends AppCompatActivity implements DatabaseGet.OnJson
         projectListView.setAdapter(adapterProjectListView);
 
         // Floating action button used to launch a new activity to add a new project
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabProject);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,6 +119,14 @@ public class ProjectList extends AppCompatActivity implements DatabaseGet.OnJson
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        if (savedInstanceState.getString("CurrentUser") != null) {
+            savedInstanceState.remove("CurrentUser");
+        }
+        savedInstanceState.putString("CurrentUser", facebookUserID);
     }
 
     private void RefreshProjectList(String url) {

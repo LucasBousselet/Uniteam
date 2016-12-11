@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_meetings"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="unidev.uniteam.MeetingsList">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabMeetings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/fab_margin"
+        app:backgroundTint="@color/uniteamGreen"
+        app:srcCompat="@drawable/ic_add_button"
+        tools:ignore="RelativeOverlap" />
+
+    <ListView
+        android:id="@+id/meetings_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

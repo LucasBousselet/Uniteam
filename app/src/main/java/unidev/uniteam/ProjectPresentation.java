@@ -15,12 +15,12 @@ import org.json.JSONObject;
 
 public class ProjectPresentation extends AppCompatActivity implements DatabaseGet.OnJsonTransmissionCompleted {
 
-    private int projectID;
+    private String currentProjectID;
 
     protected void onResume() {
         super.onResume();
         // TODO Uncomment when using database
-        GetProjectDetails("project/" + projectID);
+        GetProjectDetails("project/" + currentProjectID);
     }
 
     @Override
@@ -28,15 +28,22 @@ public class ProjectPresentation extends AppCompatActivity implements DatabaseGe
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_project_presentation);
-        // TODO Uncomment when using DB
-        //projectID = getIntent().getIntExtra("ProjectID", -1);
+
+        if (savedInstanceState != null) {
+            // TODO uncomment when using database
+            //currentProjectID = savedInstanceState.getString("currentProjectID");
+        } else {
+            Intent intent = getIntent();
+            // TODO uncomment when using database
+            //currentProjectID = getIntent().getStringExtra("currentProjectID");
+        }
 
         ImageButton taskButton = (ImageButton) findViewById(R.id.buttonProjectTasks);
         taskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intentKanban = new Intent(ProjectPresentation.this, Kanban.class);
-                intentKanban.putExtra("ProjectID", projectID);
+                intentKanban.putExtra("currentProjectID", currentProjectID);
                 startActivity(intentKanban);
             }
         });
@@ -45,9 +52,9 @@ public class ProjectPresentation extends AppCompatActivity implements DatabaseGe
         meetingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),
-                        getResources().getString(R.string.coming_soon),
-                        Toast.LENGTH_SHORT).show();
+                Intent intentMeetings = new Intent(ProjectPresentation.this, MeetingsList.class);
+                intentMeetings.putExtra("currentProjectID", currentProjectID);
+                startActivity(intentMeetings);
             }
         });
 
@@ -86,6 +93,14 @@ public class ProjectPresentation extends AppCompatActivity implements DatabaseGe
             startActivity(AboutPage);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        if (savedInstanceState.getString("currentProjectID") != null) {
+            savedInstanceState.remove("currentProjectID");
+        }
+        savedInstanceState.putString("currentProjectID", currentProjectID);
     }
 
     public void GetProjectDetails(String url) {
