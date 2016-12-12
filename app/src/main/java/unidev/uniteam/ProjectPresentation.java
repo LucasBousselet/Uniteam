@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -74,9 +73,8 @@ public class ProjectPresentation extends AppCompatActivity implements DatabaseGe
         reportsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),
-                        getResources().getString(R.string.coming_soon),
-                        Toast.LENGTH_SHORT).show();
+                Intent intentReports = new Intent(ProjectPresentation.this, ReportsList.class);
+                startActivity(intentReports);
             }
         });
     }
