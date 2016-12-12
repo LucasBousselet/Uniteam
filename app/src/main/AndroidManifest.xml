@@ -51,7 +51,6 @@
             android:label="@string/meeting_add" />
         <activity
             android:name=".ParticipantsList"
-            android:label="Participants List" />
             android:label="@string/participants_button_legend"/>
         <activity
             android:name=".ReportsList"
