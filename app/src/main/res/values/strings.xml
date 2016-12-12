@@ -81,5 +81,6 @@
 
     <!-- Strings for activity_meeting_details -->
     <string name="meeting_details">Meeting details</string>
+    <string name="label_reports">Reports list :</string>
 
 </resources>

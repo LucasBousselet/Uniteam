@@ -68,5 +68,6 @@
 
     <!-- Strings for activity_meeting_details -->
     <string name="meeting_details">Détails de la réunion</string>
+    <string name="label_reports">Liste des comptes-rendu :</string>
 
 </resources>
