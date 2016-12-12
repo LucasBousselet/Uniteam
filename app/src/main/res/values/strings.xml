@@ -62,19 +62,24 @@
     <string name="new_task_name">Name of the task</string>
 
     <!-- Strings for activity_meetings -->
-    <string name="meetings">Schedule a meeting</string>
+    <string name="meetings_list">Upcoming meetings</string>
 
     <!-- Strings for activity_meeting_add_new -->
+    <string name="meeting_add">Schedule a meeting</string>
     <string name="meeting_subject">Meeting subject</string>
     <string name="meeting_description">Description</string>
     <string name="meeting_date">Date</string>
     <string name="meeting_place">Place</string>
-    <string name="meeting_reminder">Add to calendar reminder</string>
+    <string name="meeting_reminder">Remind me</string>
+    <string name="meeting_reminder2">minutes before</string>
 
     <!-- Strings for NotifyService -->
-    <string name="notification_title">Uniteam notification</string>
-    <string name="notification_content">You have an upcoming meeting</string>
+    <string name="notification_title">You have an upcoming meeting</string>
+
     <!-- Strings for activity_participants -->
     <string name="label_participants">List of project members :</string>
+
+    <!-- Strings for activity_meeting_details -->
+    <string name="meeting_details">Meeting details</string>
 
 </resources>

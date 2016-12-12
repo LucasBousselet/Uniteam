@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
@@ -30,6 +31,15 @@ public class MeetingAddNew extends AppCompatActivity {
     private ScheduleClient scheduleClient;
 
     @Override
+    protected void onStop() {
+        // When our activity is stopped ensure we also stop the connection to the service
+        // this stops us leaking our activity into the system
+        if (scheduleClient != null)
+            scheduleClient.doUnbindService();
+        super.onStop();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meeting_add_new);
@@ -47,6 +57,9 @@ public class MeetingAddNew extends AppCompatActivity {
                         meetingDate.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+
+        scheduleClient = new ScheduleClient(this);
+        scheduleClient.doBindService();
     }
 
     @Override
@@ -64,6 +77,7 @@ public class MeetingAddNew extends AppCompatActivity {
                 EditText meetingDescriptionField = (EditText) findViewById(R.id.new_meeting_description);
                 EditText meetingDateField = (EditText) findViewById(R.id.new_meeting_date);
                 EditText meetingPlaceField = (EditText) findViewById(R.id.new_meeting_place);
+                CheckBox meetingReminder = (CheckBox) findViewById(R.id.add_to_reminder);
 
                 if (!meetingSubjectField.getText().toString().matches("") &&
                         !meetingDescriptionField.getText().toString().matches("") &&
@@ -78,7 +92,12 @@ public class MeetingAddNew extends AppCompatActivity {
                         newMeeting.put("description", meetingDescriptionField.getText().toString());
                         newMeeting.put("date", meetingDateField.getText().toString());
 
-                        scheduleClient.setAlarmForNotification(meetingDate);
+                        if (meetingReminder.isChecked()) {
+                            EditText timeOffsetField = (EditText) findViewById(R.id.offset_time);
+                            int timeOffset = Integer.parseInt(timeOffsetField.getText().toString());
+                            meetingDate.set(Calendar.MINUTE, meetingDate.get(Calendar.MINUTE) - (timeOffset + 1));
+                            scheduleClient.setAlarmForNotification(meetingDate, meetingSubjectField.getText().toString());
+                        }
 
                         // TODO Put the correct URL complement
                         ProgressDialog loading = ProgressDialog.show(MeetingAddNew.this, "Please Wait...", null, true, true);

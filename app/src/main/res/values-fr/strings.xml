@@ -48,19 +48,25 @@
     <string name="new_task_name">Nom de la tâche</string>
 
     <!-- Strings for Activity_meetings -->
-    <string name="meetings">Organiser une réunion</string>
+    <string name="meetings_list">Réunions à venir</string>
 
     <!-- Strings for activity_meeting_add_new -->
+    <string name="meeting_add">Organiser une réunion</string>
     <string name="meeting_subject">Sujet de la réunion</string>
     <string name="meeting_description">Description</string>
     <string name="meeting_date">Date</string>
     <string name="meeting_place">Lieu</string>
-    <string name="meeting_reminder">Ajouter un rappel dans le calendrier</string>
+    <string name="meeting_reminder">Me le rappeler</string>
+    <string name="meeting_reminder2">minutes avant</string>
 
     <!-- Strings for NotifyService -->
     <string name="notification_title">Uniteam notification</string>
-    <string name="notification_content">Vous avez une réunion bientôt</string>
+    <string name="notification_content">Vous avez bientôt une réunion</string>
+
     <!-- Strings for activity_participants -->
     <string name="label_participants">Liste des participants au projet :</string>
+
+    <!-- Strings for activity_meeting_details -->
+    <string name="meeting_details">Détails de la réunion</string>
 
 </resources>

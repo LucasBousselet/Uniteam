@@ -149,14 +149,14 @@ public class Kanban extends AppCompatActivity implements DatabaseGet.OnJsonTrans
         try {
             JSONArray jsonArray = result.getData();
 
-            if(result.getReturnedType().equals("projets")){
+            if (result.getReturnedType().equals("projets")) {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     // On récupère un objet JSON du tableau
                     JSONObject obj = new JSONObject(jsonArray.getString(i));
                     setTitle(obj.getString("nom"));
                 }
             }
-            if(result.getReturnedType().equals("taches")){
+            if (result.getReturnedType().equals("taches")) {
 
                 LinearLayout todoLayout = (LinearLayout) findViewById(R.id.task_kanban_todo);
                 LinearLayout doingLayout = (LinearLayout) findViewById(R.id.task_kanban_doing);

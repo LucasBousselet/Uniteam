@@ -27,8 +27,7 @@
             android:id="@+id/new_meeting_subject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-        />
+            android:ems="10" />
 
     </LinearLayout>
 
@@ -48,56 +47,79 @@
             android:id="@+id/new_meeting_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            />
+            android:ems="10" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
 
         <TextView
-            android:text="@string/meeting_date"
+            android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView5" />
+            android:text="@string/meeting_date" />
 
         <EditText
+            android:id="@+id/new_meeting_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:id="@+id/new_meeting_date" />
+            android:focusable="false" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
 
         <TextView
-            android:text="@string/meeting_place"
+            android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView4" />
+            android:text="@string/meeting_place" />
 
         <EditText
+            android:id="@+id/new_meeting_place"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/new_meeting_place" />
+            android:ems="10" />
 
     </LinearLayout>
 
-    <CheckBox
-        android:text="@string/meeting_reminder"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/add_to_reminder" />
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/add_to_reminder"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.21"
+            android:text="@string/meeting_reminder"
+            android:textColor="@android:color/tertiary_text_dark" />
+
+        <EditText
+            android:id="@+id/offset_time"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.63"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/meeting_reminder2"
+            android:textSize="15sp" />
+    </LinearLayout>
 
 </LinearLayout>

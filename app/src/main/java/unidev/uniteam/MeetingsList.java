@@ -110,9 +110,8 @@ public class MeetingsList extends AppCompatActivity implements DatabaseGet.OnJso
             Intent aboutPage = new Intent(MeetingsList.this, AboutUs.class);
             startActivity(aboutPage);
         } else if (item.getItemId() == R.id.refresh) {
-
             // TODO Uncomment when using DB
-            RefreshMeetingsDescription("reunions");
+            //RefreshMeetingsDescription("reunions");
             return true;
         }
         return super.onOptionsItemSelected(item);

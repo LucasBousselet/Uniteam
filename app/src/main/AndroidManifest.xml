@@ -26,13 +26,11 @@
             android:name=".ProjectList"
             android:label="@string/project_list_label"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ProjectPresentation" />
+        <activity android:name=".ProjectPresentation" />
         <activity
             android:name=".ProjectAddNew"
-            android:label="@string/add_new_project"/>
-        <activity
-            android:name=".TaskDescription" />
+            android:label="@string/add_new_project" />
+        <activity android:name=".TaskDescription" />
         <activity
             android:name=".Kanban"
             android:label="@string/kanban" />
@@ -44,14 +42,17 @@
             android:label="@string/add_new_task" />
         <activity
             android:name=".MeetingsList"
-            android:label="@string/meetings" />
+            android:label="@string/meetings_list" />
         <activity
-            android:name=".MeetingDetails" />
+            android:name=".MeetingDetails"
+            android:label="@string/meeting_details" />
         <activity
-            android:name=".MeetingAddNew" />
+            android:name=".MeetingAddNew"
+            android:label="@string/meeting_add" />
         <activity
             android:name=".ParticipantsList"
-            android:label="Participants List"/>
+            android:label="Participants List" />
+
         <service android:name=".ScheduleService" />
         <service android:name=".NotifyService" />
 

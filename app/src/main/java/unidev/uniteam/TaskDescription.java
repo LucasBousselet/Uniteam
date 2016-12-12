@@ -60,6 +60,14 @@ public class TaskDescription extends AppCompatActivity implements DatabaseGet.On
     }
 
     @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        if (savedInstanceState.getString("currentProjectID") != null) {
+            savedInstanceState.remove("currentProjectID");
+        }
+        savedInstanceState.putString("currentProjectID", CurrentTaskID);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_validate, menu);

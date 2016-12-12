@@ -9,7 +9,7 @@ import android.os.IBinder;
 
 import java.util.Calendar;
 
-public class ScheduleClient {
+class ScheduleClient {
 
     // The hook into our service
     private ScheduleService mBoundService;
@@ -18,14 +18,14 @@ public class ScheduleClient {
     // A flag if we are connected to the service or not
     private boolean mIsBound;
 
-    public ScheduleClient(Context context) {
+    ScheduleClient(Context context) {
         mContext = context;
     }
 
     /**
      * Call this to connect your activity to your service
      */
-    public void doBindService() {
+    void doBindService() {
         // Establish a connection with our service
         mContext.bindService(new Intent(mContext, ScheduleService.class), mConnection, Context.BIND_AUTO_CREATE);
         mIsBound = true;
@@ -49,17 +49,18 @@ public class ScheduleClient {
 
     /**
      * Tell our service to set an alarm for the given date
+     *
      * @param c a date to set the notification for
      */
-    public void setAlarmForNotification(Calendar c){
-        mBoundService.setAlarm(c);
+    void setAlarmForNotification(Calendar c, String s) {
+        mBoundService.setAlarm(c, s);
     }
 
     /**
      * When you have finished with the service call this method to stop it
      * releasing your connection and resources
      */
-    public void doUnbindService() {
+    void doUnbindService() {
         if (mIsBound) {
             // Detach our existing connection.
             mContext.unbindService(mConnection);
