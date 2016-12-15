@@ -75,7 +75,7 @@ public class FacebookConnect extends AppCompatActivity {
 
         projectButton = (Button) findViewById(R.id.project_button);
         // TODO put back at the end of the Project
-        //projectButton.setVisibility(View.INVISIBLE);
+        projectButton.setVisibility(View.INVISIBLE);
         callbackManager = CallbackManager.Factory.create();
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {

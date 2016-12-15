@@ -34,18 +34,18 @@ public class ProjectList extends AppCompatActivity implements DatabaseGet.OnJson
         // TODO comment when using database
         projectList.clear();
         Map<String, String> am1 = new HashMap<>(2);
-        am1.put("name", "Test 1");
-        am1.put("description", "Sub test 1");
+        am1.put("name", "Un projet");
+        am1.put("description", "Ceci est un test");
         projectList.add(am1);
         Map<String, String> am2 = new HashMap<>(2);
-        am2.put("name", "Test 2");
-        am2.put("description", "Sub test 2");
+        am2.put("name", "Un autre projet");
+        am2.put("description", "Ah ben non en fait");
         projectList.add(am2);
         adapterProjectListView.notifyDataSetChanged();
 
         // TODO uncomment when using database
         ProgressDialog loading = ProgressDialog.show(ProjectList.this, "Please Wait...", null, true, true);
-        //RefreshProjectList("projets");
+        RefreshProjectList("projets");
         loading.dismiss();
     }
 

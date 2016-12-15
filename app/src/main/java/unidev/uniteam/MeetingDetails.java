@@ -12,6 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -20,13 +21,28 @@ public class MeetingDetails extends AppCompatActivity implements DatabaseGet.OnJ
 
     private String currentMeetingID;
     private Map<String, String> hashMapMeeting = new HashMap<>(3);
+    private Calendar meetingDate = Calendar.getInstance();
 
     protected void onResume() {
         super.onResume();
         // TODO Uncomment when using DB
         //RefreshMeetingDescription("taches/" + CurrentTaskID);
         //findViewById(R.id.parentTask).invalidate();
-    }
+
+        TextView meetingSubject = (TextView) findViewById(R.id.meeting_subject);
+        meetingSubject.setText("Grosse réunion");
+
+        TextView meetingDescription = (TextView) findViewById(R.id.meeting_description);
+        meetingDescription.setText("Faire fonctionner la base de données");
+
+        TextView meetingPlace = (TextView) findViewById(R.id.meeting_place);
+        meetingPlace.setText("Proxima");
+
+        TextView meetingDateField = (TextView) findViewById(R.id.meeting_date);
+        String myFormat = "EEE, d MMM yyyy HH:mm";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.FRANCE);
+        meetingDateField.setText(sdf.format(meetingDate.getTime()));
+        }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

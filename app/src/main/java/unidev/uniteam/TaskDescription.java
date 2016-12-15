@@ -26,13 +26,27 @@ public class TaskDescription extends AppCompatActivity implements DatabaseGet.On
     private String CurrentTaskID;
     private Map<String, String> hashMapString = new HashMap<>(3);
     private Map<String, Integer> hashMapInt = new HashMap<>(3);
-    private Calendar deadline;
+    private Calendar deadline = Calendar.getInstance();
 
     protected void onResume() {
         super.onResume();
         // TODO Uncomment when using DB
         //RefreshMeetingsDescription("taches/" + CurrentTaskID);
         findViewById(R.id.parentTask).invalidate();
+
+        TextView taskDescription = (TextView) findViewById(R.id.task_description_text);
+        taskDescription.setText("Finir le projet de développement mobile");
+
+        String myFormat = "EEE, d MMM yyyy HH:mm";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.FRANCE);
+        TextView taskDeadline = (TextView) findViewById(R.id.task_deadline);
+        taskDeadline.setText(sdf.format(deadline.getTime()));
+
+        TextView taskDuration = (TextView) findViewById(R.id.task_duration);
+        taskDuration.setText("Des années");
+
+        Spinner taskState = (Spinner) findViewById(R.id.spinner_task_state);
+        taskState.setSelection(0);
     }
 
     @Override

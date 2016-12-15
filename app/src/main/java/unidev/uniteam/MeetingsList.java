@@ -33,12 +33,12 @@ public class MeetingsList extends AppCompatActivity implements DatabaseGet.OnJso
         // TODO comment when using database
         meetingsList.clear();
         Map<String, String> am1 = new HashMap<>(2);
-        am1.put("subject", "Test 1");
-        am1.put("date", "Sub test 1");
+        am1.put("subject", "Finir le projet");
+        am1.put("date", "Urgent");
         meetingsList.add(am1);
         Map<String, String> am2 = new HashMap<>(2);
-        am2.put("subject", "Test 2");
-        am2.put("date", "Sub test 2");
+        am2.put("subject", "Debriefing");
+        am2.put("date", "Urgent aussi");
         meetingsList.add(am2);
         adapterMeetingsListView.notifyDataSetChanged();
 

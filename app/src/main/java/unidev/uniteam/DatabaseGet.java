@@ -28,7 +28,7 @@ class DatabaseGet extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
 
         requestType = params[1];
-        String uri = "http://172.16.24.150/api/v1/" + params[0];
+        String uri = "http://api-uniteam.spieldy.com/public/" + params[0];
         HttpURLConnection urlConnection = null;
 
         try {
